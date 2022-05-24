@@ -1,23 +1,30 @@
 .topnav {
-  background-color: rgb(41, 50, 65);
+  
+  background-color: black;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+  
+  
   overflow: hidden;
   position: relative;
   text-align: center;
   padding: 20px;
+  font-family: "anu", sans-serif;
 }
+
 .topnav a {  
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 20px;
-  
+  font-size: 30px;
 }
 .topnav a:hover {
-  background-color: rgb(224, 251, 252);
-  color: rgb(238, 108, 77);
+  background-color: #DDA62A;
+  border: 1px solid white;
 }
 .topnav a.active {
-  background-color: rgb(61, 90, 128);
+  background-color: #528cf0;
   color: white;
 }

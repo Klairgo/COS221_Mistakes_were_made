@@ -16,15 +16,13 @@
   <!--nav bar-->
   <div class="topnav">
   
-    <a href="index.php">Home</a>
-    <a href="today.php">Today</a>
-    <a href="world.php">World</a>
-    <a href="south-africa.php">South-Africa</a>
-    <a href="login.php">Login</a>
-    <a href="signup.php">Register</a>
+    <a href="index.php">Home</a>    
+    <a href="index.php">Manage</a>    
+    <a href="signup.php">Logout</a>
   </div>
 </body>
 
 
 
 </html>
+
