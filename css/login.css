@@ -7,7 +7,7 @@
 
 body{
 
-     background-image: linear-gradient(45deg, #0D7B7F, darkgrey);
+     background-image: /*linear-gradient(45deg, #0D7B7F, darkgrey)*/linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img/3.png");
      background-repeat: no-repeat;
      background-attachment: fixed;
      background-size: 100%;
