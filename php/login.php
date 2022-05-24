@@ -15,7 +15,7 @@ if(isset($_POST["name"]) && isset($_POST["surname"]) && isset($_POST["email"]) &
      
      
      $valid = val($_POST["email"], $_POST["password"]);
-     if($valid.success){
+     if($valid["success"]){
           response(true, $valid["message"]);
      }
      else{

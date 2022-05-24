@@ -3,46 +3,71 @@
      u21555158
 -->
 
-
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
-<head>
-     <meta charset="UTF-8">
-     <title>All of News</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">     
-     <link rel="stylesheet" type="text/css" href="/css/login.css">
-     <link rel="icon" href="img/logo.PNG">
-     <script src="https://code.JQuery.com/JQuery-3.4.1.min.js"></script>
-     <script src="/js/validate_login.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>All of News</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hero.css" />
+    <script src="https://code.JQuery.com/JQuery-3.4.1.min.js"></script>
+    <script src="/js/validate_login.js"></script>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <!-- <h2 class="hero-subtitle">
+          
+       </h2> -->
 
-<body>
-
-     <div id="login">
+        <div id="login">
           <h1>Sign In</h1>
           <div id="signup_box">
-               
-               <div class="field">
-                    <lable for="email">Email:</lable>
-                    <input type="text" name="email" id="email" placeholder="Enter your email">
-                    <small></small>
-               </div>
-               <div class="field">
-                    <lable for="password">Password</lable>
-                    <input type="text" name="username" id="password" placeholder="Enter your password">
-                    <small></small>
-               </div>
-               <div class="field">
-                    <input type="submit" value="Login" id="button" style="margin-top: 20px;" onclick="signup()">
-               </div>
-     
+            <div class="field">
+              <lable for="email">Email:</lable>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+              />
+              <small></small>
             </div>
-
-     </div>
-
-
-
-</body>
-
+            <div class="field">
+              <lable for="password">Password</lable>
+              <input
+                type="text"
+                name="username"
+                id="password"
+                placeholder="Enter your password"
+              />
+              <small></small>
+            </div>
+            <div class="field">
+              <input
+                type="submit"
+                value="Login"
+                id="button"
+                style="margin-top: 20px"
+                onclick="signup()"
+              />
+            </div>
+            <button
+              type="button"
+              class="hero-button"
+              onclick="location.href='/index.php'"
+            >
+              &laquo Go back
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  
 </html>
