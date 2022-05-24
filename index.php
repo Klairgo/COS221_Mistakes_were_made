@@ -27,20 +27,12 @@
           
        </h2> -->
 
-               <button type="button" id="log" class="hero-button" onclick="location.href='tours.html'">
+               <button type="button" id="log" class="hero-button" onclick="location.href='php/loginP4.php'">
                     Login &raquo;
                </button>
-               <button type="button" id="reg" class="hero-button" onclick="location.href='tours.html'">
+               <button type="button" id="reg" class="hero-button" onclick="location.href='php/signup.php'">
                     Register &raquo;
                </button>
-               <script type="text/javascript">
-                    document.getElementById("log").onclick = function() {
-                         location.href = "php/loginP4.php";
-                    };
-                    document.getElementById("reg").onclick = function() {
-                         location.href = "php/signup.php";
-                    };
-               </script>
 
           </div>
 
