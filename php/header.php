@@ -17,7 +17,7 @@
   <div class="topnav">
   
     <a href="landing.php">Home</a>    
-    <a href="php/logout.php">Logout</a>
+    <a href="logout.php">Logout</a>
   </div>
 </body>
 
