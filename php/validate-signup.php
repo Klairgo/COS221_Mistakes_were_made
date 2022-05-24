@@ -1,8 +1,4 @@
 <?php
-/*
-Karel Olwage
-u21555258
-*/
 
 include 'config.php';
 
@@ -39,7 +35,8 @@ function validate($name, $surname, $email, $password, $conf_password){
     }
 
     //$connection = new mysqli("wheatley.cs.up.ac.za", "u21555258", "NVIEV6OIB2JF37YWX4TIXEGJI5RMK36M", "u21555258");
-    $connection = Connectdb::instance();
+    //$connection = Connectdb::instance();
+    
 
     if($connection->connect_error){
         //die("Connection failure: ". $connection->connect_error);
