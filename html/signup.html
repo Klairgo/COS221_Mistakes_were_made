@@ -3,76 +3,129 @@
      u21555258
 -->
 
-<!doctype html>
+<!DOCTYPE html>
 
 <html>
-<head>
-     <meta charset="UTF-8">
-     <title>All of News</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">     
-     <link rel="stylesheet" type="text/css" href="/css/login.css">
-     <script src="https://code.JQuery.com/JQuery-3.4.1.min.js"></script>
-     <script src="/js/validate_signup.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>All of News</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="/css/hero.css" />
+    <script src="https://code.JQuery.com/JQuery-3.4.1.min.js"></script>
+    <script src="/js/validate_signup.js"></script>
+  </head>
 
-</head>
-
-<body>
-
-     <div id="login">
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <div id="login">
           <h1>Sign Up</h1>
           <div id="signup_box">
-               <div class="field">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" id="name" placeholder="Enter your name">
-                    <small></small>
-               </div>
+            <div class="field">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+              />
+              <small></small>
+            </div>
 
-               <div class="field">
-                    <label for="surname">Surname:</label>
-                    <input type="text" name="surname" id="surname" placeholder="Enter your surname">
-                    <small></small>
-               </div>
+            <div class="field">
+              <label for="surname">Surname:</label>
+              <input
+                type="text"
+                name="surname"
+                id="surname"
+                placeholder="Enter your surname"
+              />
+              <small></small>
+            </div>
 
-               <div class="field">
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" id="email" placeholder="Enter your surname">
-                    <small></small>
-               </div>
+            <div class="field">
+              <label for="email">Email:</label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Enter your surname"
+              />
+              <small></small>
+            </div>
 
-               <div class="field">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password" placeholder="Pick a password">
-                    <small></small>
-               </div>
+            <div class="field">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Pick a password"
+              />
+              <small></small>
+            </div>
 
-               <div class="field">
-                    <label for="conf_password">Confirm Password:</label>
-                    <input type="password" name="conf_password" id="conf_password" placeholder="Confirm password">
-                    <small></small>
-               </div>
+            <div class="field">
+              <label for="conf_password">Confirm Password:</label>
+              <input
+                type="password"
+                name="conf_password"
+                id="conf_password"
+                placeholder="Confirm password"
+              />
+              <small></small>
+            </div>
 
-               <div class="field">
-                    <input type="submit" value="Register" id="button" style="margin-top: 20px" onclick="signup()">
-               </div>
+            <div class="field">
+              <input
+                type="submit"
+                value="Register"
+                id="button"
+                style="margin-top: 20px"
+                onclick="signup()"
+              />
+            </div>
           </div>
-          <div id="succs" style="display: none;">
-               <h2 style="text-align: center; margin-top: 30px;">Your account has been created successfully</h2>
-               <input type="submit" id="sign_login" value="Login" onclick=window.location.href='login.html'>
-     
+          <div id="succs" style="display: none">
+            <h2 style="text-align: center; margin-top: 30px">
+              Your account has been created successfully
+            </h2>
+            <input
+              type="submit"
+              id="sign_login"
+              value="Login"
+              onclick="window.location.href"
+              ="login.html"
+            />
           </div>
-          <div id="error" style="display: none;">
-               <h2 style="text-align: center; margin-top: 30px;">There was an error while creating your account. Please try again</h2>
-               <div id="error_message">
-                    <h2 style="color: red; margin-bottom: 10px;">Error Message</h2>
-                    <div id="error_mes">Name already exists</div>
-               </div>
-               <input type="submit" id="error_reg" value="Register" onclick="showregister()">
-     
+          <div id="error" style="display: none">
+            <h2 style="text-align: center; margin-top: 30px">
+              There was an error while creating your account. Please try again
+            </h2>
+            <div id="error_message">
+              <h2 style="color: red; margin-bottom: 10px">Error Message</h2>
+              <div id="error_mes">Name already exists</div>
+            </div>
+            <input
+              type="submit"
+              id="error_reg"
+              value="Register"
+              onclick="showregister()"
+            />
           </div>
-     </div>
-
-
-    
-</body>
-
+          <button
+            type="button"
+            class="hero-button"
+            onclick="location.href='/index.php'"
+          >
+            &laquo Go back
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

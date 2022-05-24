@@ -17,7 +17,6 @@
   <div class="topnav">
   
     <a href="landing.php">Home</a>    
-    <a href="manager.php">Manage</a>    
     <a href="php/logout.php">Logout</a>
   </div>
 </body>
