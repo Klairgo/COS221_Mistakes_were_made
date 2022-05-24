@@ -17,7 +17,10 @@ body{
      align-items: center;
      min-height: 100vh;
      margin: 0px;
+     color: white;
+     font-size: 20px;
      }
+
 
 /* Navigation bar and top banner style */
 
@@ -25,7 +28,9 @@ body{
 
 #login {
      width: 450px;
-     background-color: #0D7B7F;
+     /* background-color: #0D7B7F; */
+     background-color: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+     border: solid white;
      padding: 1em;
      opacity: 0.9;
      border-radius: 10px;
