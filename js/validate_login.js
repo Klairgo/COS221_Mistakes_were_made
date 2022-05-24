@@ -30,7 +30,7 @@ function ajax(data, callback){
         }
     };
 
-    req.open("POST", "/php/login.php", true);
+    req.open("POST", "../php/login.php", true);
 
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -66,7 +66,7 @@ function login(){
             },
             function(data){
                 if(data.success){
-                    window.location.href="/php/landing";
+                    window.location.href="../php/landing";
                     setStorage();
                 }
                 else{
