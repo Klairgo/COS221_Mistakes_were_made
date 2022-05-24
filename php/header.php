@@ -16,9 +16,9 @@
   <!--nav bar-->
   <div class="topnav">
   
-    <a href="index.php">Home</a>    
-    <a href="index.php">Manage</a>    
-    <a href="signup.php">Logout</a>
+    <a href="landing.php">Home</a>    
+    <a href="manager.php">Manage</a>    
+    <a href="php/logout.php">Logout</a>
   </div>
 </body>
 
