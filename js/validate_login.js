@@ -30,7 +30,7 @@ function ajax(data, callback){
         }
     };
 
-    req.open("POST", "php/signup.php", true);
+    req.open("POST", "php/login.php", true);
 
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
@@ -61,11 +61,8 @@ function signup(){
 
         ajax(
             {
-                "name" : name.value,
-                "surname" : surname.value,
                 "email": email.value,
                 "password" : password.value,
-                "conf_password" : conf_password.value
             },
             function(data){
                 if(data.success){
