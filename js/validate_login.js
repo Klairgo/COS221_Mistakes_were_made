@@ -66,16 +66,12 @@ function login(){
             },
             function(data){
                 if(data.success){
-                    hide("signup_box");
-                    show("succs");
+                    window.location.href="/php/landing";
                     setStorage();
                 }
                 else{
-                    show("error")
-                    hide("signup_box");
-                    hide("succs");
+                   showError(email, data.message) ;
                 }
-                message(data.message);
             }
         );
     }
