@@ -30,7 +30,7 @@ function ajax(data, callback){
         }
     };
 
-    req.open("POST", "php/login.php", true);
+    req.open("POST", "/php/login.php", true);
 
     req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
