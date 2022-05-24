@@ -27,7 +27,7 @@
           
        </h2> -->
 
-               <button type="button" id="log" class="hero-button" onclick="location.href='php/loginP4.php'">
+               <button type="button" id="log" class="hero-button" onclick="location.href='php/login.php'">
                     Login &raquo;
                </button>
                <button type="button" id="reg" class="hero-button" onclick="location.href='php/signup.php'">
