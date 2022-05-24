@@ -4,7 +4,7 @@ body {
  }
  @font-face {
    font-family: anu;
-   src: url(css/Anurati-Regular.otf);
+   src: url("Anurati-Regular.otf");
  }
  .hero {
     position: relative;
@@ -54,7 +54,7 @@ body {
     border: 1px solid white;
     margin-top: 5rem;
     padding: 0.9375rem1.875rem;
-    font-family: "Monserrat", sans-serif;
+    font-family: "anu", sans-serif;
     font-size: 1.5rem;
     font-weight: 200;
     cursor: pointer;
