@@ -27,10 +27,10 @@
           
        </h2> -->
 
-               <button type="button" id="log" class="hero-button" onclick="location.href='php/login.php'">
+               <button type="button" id="log" class="hero-button" onclick="location.href='login.html'">
                     Login &raquo;
                </button>
-               <button type="button" id="reg" class="hero-button" onclick="location.href='php/signup.php'">
+               <button type="button" id="reg" class="hero-button" onclick="location.href='signup.html'">
                     Register &raquo;
                </button>
 
