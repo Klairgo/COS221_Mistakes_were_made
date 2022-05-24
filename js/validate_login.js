@@ -48,7 +48,7 @@ function message(data){
 }
 
 
-function signup(){
+function login(){
     var email = element("email");
     var password = element("password");
     let uemail = val_email(email),
@@ -68,6 +68,7 @@ function signup(){
                 if(data.success){
                     hide("signup_box");
                     show("succs");
+                    setStorage();
                 }
                 else{
                     show("error")
@@ -80,26 +81,6 @@ function signup(){
     }
 }
 
-
-/*
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    let uname = val_name(),
-        usurname = val_surname(),
-        uemail = val_email(),
-        upassword = val_password(),
-        uconf_password = val_confirm_password();
-
-    let valid  = uname && usurname &&
-                uemail && upassword &&
-                uconf_password;
-                
-    if(valid){
-        this.submit();
-    }
-});
-*/
 
 const isEmpty = input => input === "" ? true : false;
 
@@ -178,3 +159,6 @@ const val_password = (vpassword) => {
     return valid;
 }
 
+function setStorage(){
+    localStorage.setItem("LoggedIn", 1);
+}
