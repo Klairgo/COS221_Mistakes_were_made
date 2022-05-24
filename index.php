@@ -4,7 +4,7 @@
 
 <head>
      <meta>
-     <title>Landing</title>
+     <title>index</title>
      <meta charset="UTF-8" />
      <meta name="author" content="Mistakes_were_made" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
