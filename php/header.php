@@ -15,13 +15,12 @@
   <body>
   <!--nav bar-->
   <div class="topnav">
-  
     <a href="landing.php">Home</a>    
-    <a href="logout.php">Logout</a>
+    <a href="index.php" onclick = "removeStorage()">Logout</a>
   </div>
 </body>
 
 
-
+<script href = "logout.js"></script>
 </html>
 
