@@ -1,3 +1,6 @@
+<?php
+        include_once("php/header.php");
+    ?>
 <!DOCTYPE html>
 
 <html>
@@ -14,7 +17,7 @@
 </head>
 
 <body>
-
+   
      <section class="hero">
 
           <div class="hero-content">
