@@ -13,6 +13,9 @@
   font-family: "anu", sans-serif;
 }
 
+#admin{
+  visibility: hidden;
+}
 .topnav a {  
   color: #f2f2f2;
   text-align: center;
