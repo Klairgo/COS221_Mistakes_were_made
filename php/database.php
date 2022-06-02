@@ -7,7 +7,6 @@ Post data of form:
         Fplace : "mistakes were made",
         ...
     }
-
 */
 
 class database {
@@ -69,10 +68,10 @@ class database {
             else{
                 return $this->response(false, "Param does not exist");
             }
-        }
-        else {
-            return $this->response(false, "Param 'type' was not given");
-        }
+            }
+            else {
+                return $this->response(false, "Param 'type' was not given");
+            }
     
     }
 
