@@ -171,6 +171,7 @@ class database {
         $result = $stmt->get_result(); 
         $match = $result->fetch_assoc();
         return $match;
+    }
 
     private function create_sponsor($data){
         $stmt = $conn->prepare("INSERT INTO matches (company_name) VALUES (?)");
