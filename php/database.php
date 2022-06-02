@@ -72,7 +72,7 @@ class database {
                 return $this->response(false, "Param does not exist");
             }
         }
-        else {
+        else{
             return $this->response(false, "Param 'type' was not given");
         }
     
@@ -96,7 +96,8 @@ class database {
     private function get_tournament($data){
         $stmt = "SELECT * from tournament";
         $result = $conn->query($stmt);
-        $return = $result->fetch_assoc();
+        $tournament = $result->fetch_assoc();
+        return $tournament;
     }
     
     private function create_player($data){
@@ -110,7 +111,8 @@ class database {
     private function get_player($data){
         $stmt = "SELECT * from player";
         $result = $conn->query($stmt);
-        $return = $result->fetch_assoc();
+        $player = $result->fetch_assoc();
+        return $player;
     }
     
     private function create_venue($data){
@@ -126,8 +128,8 @@ class database {
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
         $result = $stmt->get_result(); 
-        $user = $result->fetch_assoc();
-        return $user;
+        $venue = $result->fetch_assoc();
+        return $venue;
     }
     
     private function create_team($data){
@@ -141,8 +143,8 @@ class database {
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
         $result = $stmt->get_result(); 
-        $user = $result->fetch_assoc();
-        return $user;
+        $team = $result->fetch_assoc();
+        return $team;
     }
     
     private function create_match($data){
@@ -156,8 +158,8 @@ class database {
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
         $result = $stmt->get_result(); 
-        $user = $result->fetch_assoc();
-        return $user;
+        $match = $result->fetch_assoc();
+        return $match;
 
     private function create_sponsor($data){
         $stmt = $conn->prepare("INSERT INTO matches (company_name) VALUES (?)");
