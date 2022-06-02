@@ -118,23 +118,42 @@ class database {
     }
     
     private function get_venue($data){
-    
+        $sql = "SELECT * FROM venue";
+        $stmt = $conn->prepare($sql); 
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $user = $result->fetch_assoc();
+        return $user;
     }
     
     private function create_team($data){
-    
+        $stmt = $conn->prepare("INSERT INTO teams (total_earnings, name, tournament_wins, manager_id, ranking, location) VALUES (?,?,?,?,?,?)");
+        $stmt->bind_param("ssssss", $data["total_earnings"], $data["team_name"], $data["tour_wins"], $data["manager_id"], $data["ranking"], $data["location"]);
+        $stmt->execute();
     }
     
     private function get_team($data){
-    
+        $sql = "SELECT * FROM team";
+        $stmt = $conn->prepare($sql); 
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $user = $result->fetch_assoc();
+        return $user;
     }
     
     private function create_match($data){
-    
-    }
+        $stmt = $conn->prepare("INSERT INTO matches (match_id, team1_id, team2_id) VALUES (?,?,?)");
+        $stmt->bind_param("sss", $data["match_id"], $data["team1_id"], $data["team2_id"]);
+        $stmt->execute();
+    }   
     
     private function get_match($data){
-
+        $sql = "SELECT * FROM matches";
+        $stmt = $conn->prepare($sql); 
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $user = $result->fetch_assoc();
+        return $user;
 }
 
 

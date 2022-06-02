@@ -79,7 +79,7 @@ function login(){
 
 function isValid(){
     let valid = getCookie(Admin);
-    if (valid == 1){
+    if (valid == "true"){
         document.getElementById().style.visibility = 'visible';
     }
     else{
