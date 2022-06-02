@@ -108,6 +108,7 @@ class database {
         $stmt = "SELECT * from tournament";
         $result = $conn->query($stmt);
         $return = $result->fetch_assoc();
+        return $return;
     }
     
     private function create_player($data){
@@ -147,7 +148,7 @@ class database {
         $stmt->execute();
     }
     
-    private function get_team($data){
+    private function get_team(){
         $sql = "SELECT * FROM team";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
@@ -169,6 +170,7 @@ class database {
         $result = $stmt->get_result(); 
         $user = $result->fetch_assoc();
         return $user;
+    }
 
     private function create_sponsor($data){
         $stmt = $conn->prepare("INSERT INTO matches (company_name) VALUES (?)");
