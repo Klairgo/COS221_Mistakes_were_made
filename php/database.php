@@ -181,21 +181,39 @@ class database {
     }
 
     private function update_accounts($data){
+        $stmt = $conn->prepare("UPDATE accounts SET ? = ? WHERE id = ?");
+        $stmt->bind_param("sss", $data["change_value"], $data["new_value"]. $data["account_id"]);
+        $stmt->execute();
     }
 
     private function update_manager($data){
+        $stmt = $conn->prepare("UPDATE manager SET ? = ? WHERE manager_id = ?");
+        $stmt->bind_param("sss", $data["change_value"], $data["new_value"], $data["manager_id"]);
+        $stmt->execute();
     }
 
     private function update_teams($data){
+        $stmt = $conn->prepare("UPDATE teams SET ? = ? WHERE team_id = ?");
+        $stmt->bind_param("sss", $data["change_value"], $data["new_value"], $data["team_id"]);
+        $stmt->execute();
     }
 
     private function update_venue($data){
+        $stmt = $conn->prepare("UPDATE venue SET ? = ? WHERE venue_id = ?");
+        $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["venue_id"]);
+        $stmt->execute();
     }
 
     private function update_match($data){
+        $stmt = $conn->prepare("UPDATE match SET ? = ? WHERE match_id = ?");
+        $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["match_id"]);
+        $stmt->execute();
     }
 
     private function update_sponsered_by($data){
+        $stmt = $conn->prepare("UPDATE sponsored_by SET ? = ? WHERE sponser_id = ?");
+        $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["sponser_id"]);
+        $stmt->execute();
     }
 
 }
