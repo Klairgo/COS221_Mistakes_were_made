@@ -23,13 +23,13 @@ function val($email, $pass)
         setCookie("admin" , "true");
     }
     if ($checkIn != 0) {
-        $salt = "Select salt from Sign_up where email='$email'";
+        $salt = "Select salt from account where email='$email'";
         $resultSalt = mysqli_query($conn, $salt);
         $row = mysqli_fetch_assoc($resultSalt);
         $salted = $row['salt'];
         $saltedPass = $salted . $pass;
         $hashPass = hash('sha256',$saltedPass);
-        $pass = "Select password from Sign_up where email='$email";
+        $pass = "Select password from account where email='$email";
         $resultPass = mysqli_query($conn, $pass);
 
         if ($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == true) {
