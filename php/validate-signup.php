@@ -1,6 +1,7 @@
 <?php
 
-
+include_once "config.php";
+$conn = openCon();
 function validate_response($success, $message = ""){
      $encode = [
           "success" => $success,
@@ -11,7 +12,7 @@ function validate_response($success, $message = ""){
 
 
 function validate($name, $surname, $email, $password, $conf_password){
-    include "config.php";
+    global $conn;
     $name_pat = '/[ `!,.<>@#$%^()_+\-&*=\[\]{};\':\"\\|\/?~]/';
     $pass_pat = "/^(?=\S{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/";
 

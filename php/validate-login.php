@@ -1,5 +1,6 @@
 <?php
-
+include_once "config.php";
+$conn = openCon();
 function validate_response($success, $message = ""){
      $encode = [
           "success" => $success,
@@ -10,15 +11,16 @@ function validate_response($success, $message = ""){
 
 function val($email, $pass)
 {
-    require_once('config.php');
-
-    $checkUser = "Select * from Sign_up where email='$email'";
+    global $conn;
+    $admin = false;
+    $checkUser = "Select * from sign_up where email='$email'";
     $result = mysqli_query($conn, $checkUser);
     $checkIn = mysqli_num_rows($result);
-    $setCookie("admin" , "false");
+    setcookie("admin" , "false");
 
     if($checkUser = 'u21489549@tuks.co.za' || $checkUser= ""){//need to insert emails here
-        $setCookie("admin" , "true");
+        $admin = true;
+        setCookie("admin" , "true");
     }
     if ($checkIn != 0) {
         $salt = "Select salt from Sign_up where email='$email'";
@@ -27,11 +29,10 @@ function val($email, $pass)
         $salted = $row['salt'];
         $saltedPass = $salted . $pass;
         $hashPass = hash('sha256',$saltedPass);
+        $pass = "Select password from Sign_up where email='$email";
+        $resultPass = mysqli_query($conn, $pass);
 
         if ($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == true) {
-            if($checkUser = 'u21489549@tuks.co.za' || $checkUser= ""){//need to insert emails here
-                $setCookie("admin" , "true");
-            }
             return validate_response(true, "Password match");
             } else if($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == false){
             return validate_response(true, "Password match");

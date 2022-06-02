@@ -8,8 +8,8 @@ Post data of form:
         ...
     }
 */
-require_once('config.php');
-$vibe = $conn;
+include_once 'config.php';
+$conn = openCon();
 class database {
     
     private $param;
@@ -26,6 +26,7 @@ class database {
     }
 
     private function main(){
+    
         $this->param = file_get_contents('php://input');
         $param_data = json_decode($this->param, true);
         if(isset($param_data["action"])){
@@ -100,6 +101,7 @@ class database {
     }     
     
     private function create_tournament($data){
+        global $conn;
         $stmt = $conn->prepare("INSERT INTO tournament (venue_id, first_place_id, second_place_id, third_place_id) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $data["venue"], $data["first_place_id"], $data["second_place_id"], $data["third_place_id"]); 
         $stmt->execute();
@@ -107,6 +109,7 @@ class database {
     }
     
     private function get_tournament(){
+        global $conn;
         $stmt = "SELECT * from tournament";
         $result = $conn->query($stmt);
         $tournament = $result->fetch_assoc();
@@ -114,6 +117,7 @@ class database {
     }
     
     private function create_player($data){
+        global $conn;
         $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"]); 
         $stmt->execute();
@@ -122,6 +126,7 @@ class database {
     }
     
     private function get_player(){
+        global $conn;
         $stmt = "SELECT * from player";
         $result = $conn->query($stmt);
         $player = $result->fetch_assoc();
@@ -129,6 +134,7 @@ class database {
     }
     
     private function create_venue($data){
+        global $conn;
         $stmt = $conn->prepare("INSERT INTO venue (venue_name, venue_location, venue_email, venue_call_number) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $data["venue_name"], $data["venue_location"], $data["venue_email"], $data["vanue_call_number"]); 
         $stmt->execute();
@@ -137,6 +143,7 @@ class database {
     }
     
     private function get_venue(){
+        global $conn;
         $sql = "SELECT * FROM venue";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
@@ -146,12 +153,14 @@ class database {
     }
     
     private function create_team($data){
+        global $conn;
         $stmt = $conn->prepare("INSERT INTO teams (total_earnings, name, tournament_wins, manager_id, ranking, location) VALUES (?,?,?,?,?,?)");
         $stmt->bind_param("ssssss", $data["total_earnings"], $data["team_name"], $data["tour_wins"], $data["manager_id"], $data["ranking"], $data["location"]);
         $stmt->execute();
     }
     
     private function get_team(){
+        global $conn;
         $sql = "SELECT * FROM team";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
@@ -161,12 +170,14 @@ class database {
     }
     
     private function create_match($data){
+        global $conn;
         $stmt = $conn->prepare("INSERT INTO matches (match_id, team1_id, team2_id) VALUES (?,?,?)");
         $stmt->bind_param("sss", $data["match_id"], $data["team1_id"], $data["team2_id"]);
         $stmt->execute();
     }   
     
     private function get_match(){
+        global $conn;
         $sql = "SELECT * FROM matches";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
@@ -176,42 +187,49 @@ class database {
     }
 
     private function create_sponsor($data){
+        global $conn;
         $stmt = $conn->prepare("INSERT INTO matches (company_name) VALUES (?)");
         $stmt->bind_param("s", $data["company_name"]);
         $stmt->execute();
     }
 
     private function update_accounts($data){
+        global $conn;
         $stmt = $conn->prepare("UPDATE accounts SET ? = ? WHERE id = ?");
         $stmt->bind_param("sss", $data["change_value"], $data["new_value"]. $data["account_id"]);
         $stmt->execute();
     }
 
     private function update_manager($data){
+        global $conn;
         $stmt = $conn->prepare("UPDATE manager SET ? = ? WHERE manager_id = ?");
         $stmt->bind_param("sss", $data["change_value"], $data["new_value"], $data["manager_id"]);
         $stmt->execute();
     }
 
     private function update_teams($data){
+        global $conn;
         $stmt = $conn->prepare("UPDATE teams SET ? = ? WHERE team_id = ?");
         $stmt->bind_param("sss", $data["change_value"], $data["new_value"], $data["team_id"]);
         $stmt->execute();
     }
 
     private function update_venue($data){
+        global $conn;
         $stmt = $conn->prepare("UPDATE venue SET ? = ? WHERE venue_id = ?");
         $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["venue_id"]);
         $stmt->execute();
     }
 
     private function update_match($data){
+        global $conn;
         $stmt = $conn->prepare("UPDATE match SET ? = ? WHERE match_id = ?");
         $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["match_id"]);
         $stmt->execute();
     }
 
     private function update_sponsered_by($data){
+        global $conn;
         $stmt = $conn->prepare("UPDATE sponsored_by SET ? = ? WHERE sponser_id = ?");
         $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["sponser_id"]);
         $stmt->execute();
