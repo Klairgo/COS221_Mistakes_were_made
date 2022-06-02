@@ -67,3 +67,35 @@
     border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
 
   }
+  .flex-t {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+    flex-wrap: nowrap;
+    padding: 5px 5px;
+    text-align: center;
+    background-color: rgb(41, 50, 65);
+    border-style: solid;
+    border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+    width :950px;
+    
+  }
+  .flex-t div {
+    padding: 5px;
+    justify-content: center;
+    /* border: solid pink; */
+    width: max-content;
+    font-family: "anu", sans-serif;
+    font-size: medium;
+    color: white;
+
+  }
+  .flex-t div:hover {
+    color: rgb(152, 193, 217);
+  }
+  #tname{
+    align-self: left;
+  }
+  #trank{
+    align-self: right;
+  }

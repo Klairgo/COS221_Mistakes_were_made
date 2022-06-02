@@ -16,7 +16,7 @@ include_once("header.php");
      </meta>
      <link rel="stylesheet" href="../css/hero.css">
      <link rel="stylesheet" href="../css/layout.css">
-
+     
 </head>
 
 <body>
