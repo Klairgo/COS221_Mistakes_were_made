@@ -1,6 +1,5 @@
 <?php
 
-include 'config.php';
 
 function validate_response($success, $message = ""){
      $encode = [
@@ -12,6 +11,7 @@ function validate_response($success, $message = ""){
 
 
 function validate($name, $surname, $email, $password, $conf_password){
+    include "config.php";
     $name_pat = '/[ `!,.<>@#$%^()_+\-&*=\[\]{};\':\"\\|\/?~]/';
     $pass_pat = "/^(?=\S{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/";
 
@@ -38,15 +38,15 @@ function validate($name, $surname, $email, $password, $conf_password){
     //$connection = Connectdb::instance();
     
 
-    if($connection->connect_error){
+    if($conn->connect_error){
         //die("Connection failure: ". $connection->connect_error);
-        return validate_response(false, "Connection Failure: ".$connection->connect_error);
+        return validate_response(false, "Connection Failure: ".$conn->connect_error);
     }
     else{
         $password_hashed = password_hash($password, PASSWORD_DEFAULT);
         $api = bin2hex(random_bytes(20));
         $check_api = "SELECT API_key FROM ACCOUNTS";
-        $api_result = $connection->query($check_api);
+        $api_result = $conn->query($check_api);
 
         //check if api exists
         if($api_result->num_rows > 0){
@@ -66,12 +66,12 @@ function validate($name, $surname, $email, $password, $conf_password){
         $query = "INSERT INTO ACCOUNTS (name, surname, email, password, API_key) VALUES ('$name', '$surname','$email', '$password_hashed', '$api')";
 
 
-        if($connection->query($query) === true){
-            $connection->close();
+        if($conn->query($query) === true){
+            $conn->close();
             return validate_response(true, "Success sql:".$api);
         }
         else{
-            $connection->close();
+            $conn->close();
             return validate_response(false, "Email already exists");
         }
     }
