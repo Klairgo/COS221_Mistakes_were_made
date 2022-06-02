@@ -15,7 +15,10 @@ function val($email, $pass)
     $checkUser = "Select * from Sign_up where email='$email'";
     $result = mysqli_query($conn, $checkUser);
     $checkIn = mysqli_num_rows($result);
-
+    $admin = false;
+    if($checkUser = 'alistairmikeross@gmail.com'){
+        $admin = true;
+    }
     if ($checkIn != 0) {
         $salt = "Select salt from Sign_up where email='$email'";
         $resultSalt = mysqli_query($conn, $salt);
@@ -24,9 +27,13 @@ function val($email, $pass)
         $saltedPass = $salted . $pass;
         $hashPass = hash('sha256',$saltedPass);
 
-        if ($hashPass ==  $resultPass->fetch_assoc()["password"]) {
+        if ($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == true) {
+            setcookie("Admin", 1, 10000000);
             return validate_response(true, "Password match");
-        } else {
+        } else if($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == false){
+            return validate_response(true, "Password match");
+        }
+        else {
             return validate_response(false, "Password does not match");
         }
     } else {

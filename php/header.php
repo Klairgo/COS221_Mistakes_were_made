@@ -17,6 +17,7 @@
   <div class="topnav">
     <a href="landing.php">Home</a>    
     <a href="../index.php" onclick = "removeStorage()">Logout</a>
+    <a id = "admin" href="admin.php">Admin</a>
   </div>
 </body>
 

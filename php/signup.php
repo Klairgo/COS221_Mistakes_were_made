@@ -1,8 +1,4 @@
 <?php
-/*
-Karel Olwage
-u21555258
-*/
 include "validate-signup.php";
 
 function response($success, $message = ""){
