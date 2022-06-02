@@ -8,9 +8,10 @@ Post data of form:
         ...
     }
 */
-require "config.php";
-
+require_once('config.php');
+$vibe = $conn;
 class database {
+    
     private $param;
     private $return;
     private $data_internal;
