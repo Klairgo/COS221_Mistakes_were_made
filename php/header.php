@@ -18,17 +18,11 @@ $state ="to";
   <body>
   <!--nav bar-->
   <div class="topnav">
-<<<<<<< HEAD
     <a id="tor"  onclick = "landonme('to')">Tournament </a>
     <a id="player"  onclick ="landonme('p')">Player</a>  
     <a id="team"  onclick ="landonme('te')">Team</a>      
     <a id="logou" href="../index.php" onclick = "removeStorage()">Logout</a>
     <a id = "admin" href="admin.php">Admin</a>
-=======
-    <a href="landing.php">Home</a>    
-    <a href="../index.php" onclick = "removeStorage()">Logout</a>
-    <a id = "admin" href="admin.php">Change Data</a>
->>>>>>> 833f944e7d477219d77b0441f831cf2aa963fa89
   </div>
 </body>
 

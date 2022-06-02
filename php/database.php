@@ -149,7 +149,7 @@ class database {
         $stmt->execute();
     }
     
-    private function get_team($data){
+    private function get_team(){
         $sql = "SELECT * FROM team";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
