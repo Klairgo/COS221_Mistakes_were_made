@@ -60,6 +60,9 @@ class database {
             else if($param_data["action"] == "get_match"){
                 $this->get_match();
             }
+            else if($param_data["action"] = "create_sponsor"){
+                $this->create_sponsor($param_data);
+            }
             //START OF UPDATE
             else if($param_data["action"] == "update_accounts"){
                 $this->update_accounts($param_data);
@@ -79,7 +82,11 @@ class database {
             else if($param_data["action"] == "update_sponsored_by"){
                 $this->update_sponsered_by($param_data);
             }
-            else if($param_data["action"] = "create_sponsor"){
+            //This is where delete starts
+            else if($param_data["action"] = "delete_account"){
+                $this->create_sponsor($param_data);
+            }
+            else if($param_data["action"] = "delete_sponsor"){
                 $this->create_sponsor($param_data);
             }
             else{
