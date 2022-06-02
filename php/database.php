@@ -18,9 +18,9 @@ class database {
     public static function instance(){
         static $instance = null;
         if($instance == null){
-            $instance = new API();
+            $instance = new database();
         }
-        return $instance->get_articles();
+        return $instance->main();
     }
 
     private function main(){
@@ -28,7 +28,7 @@ class database {
         $param_data = json_decode($this->param, true);
         if(isset($param_data["action"])){
             if($param_data["action"] == "create_tournament"){
-                $this->create_function($param_data);
+                $this->create_tournament($param_data);
             }
             else if($param_data["action"] == "get_tournament"){
                 $this->get_tournament($param_data);
@@ -108,7 +108,7 @@ class database {
         $result = $stmt->query($stmt);
     }
     
-    private function create_vanue($data){
+    private function create_venue($data){
         $stmt = $conn->prepare("INSERT INTO venue (venue_name, venue_location, venue_email, venue_call_number) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $data["venue_name"], $data["venue_location"], $data["venue_email"], $data["vanue_call_number"]); 
         $stmt->execute();
