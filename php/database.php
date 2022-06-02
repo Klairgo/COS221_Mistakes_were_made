@@ -8,6 +8,7 @@ Post data of form:
         ...
     }
 */
+require "config.php";
 
 class database {
     private $param;
