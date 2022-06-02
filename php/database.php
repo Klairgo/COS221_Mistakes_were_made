@@ -85,22 +85,35 @@ class database {
     }     
     
     private function create_tournament($data){
-        
+        $stmt = $conn->prepare("INSERT INTO tournament (venue_id, first_place_id, second_place_id, third_place_id) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $data["venue"], $data["first_place_id"], $data["second_place_id"], $data["third_place_id"]); 
+        $stmt->execute();
+        $stmt->close();
     }
     
     private function get_tournament($data){
-    
+        $stmt = "SELECT * from tournament";
+        $result = $stmt->query($stmt);
     }
     
     private function create_player($data){
+        $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"]); 
+        $stmt->execute();
+        $stmt->close();
     
     }
     
     private function get_player($data){
-    
+        $stmt = "SELECT * from player";
+        $result = $stmt->query($stmt);
     }
     
     private function create_vanue($data){
+        $stmt = $conn->prepare("INSERT INTO venue (venue_name, venue_location, venue_email, venue_call_number) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $data["venue_name"], $data["venue_location"], $data["venue_email"], $data["vanue_call_number"]); 
+        $stmt->execute();
+        $stmt->close();
     
     }
     
