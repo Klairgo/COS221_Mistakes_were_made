@@ -1,0 +1,69 @@
+@font-face {
+    font-family: anu;
+    src: url("Anurati-Regular.otf");
+  }
+.flex-v {
+    font-size: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* padding: 25px 25px; */
+    text-align: center;
+    /* border: solid red; */
+    padding: 10px 10px;
+    width: fit-content;
+  }
+  .flex-v div {
+    font-size: 30px;
+  }
+  .flex-c {
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important;
+    flex-wrap: nowrap;
+    padding: 25px 25px;
+    text-align: center;
+    background-color: rgb(41, 50, 65);
+    border-style: solid;
+    border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+    width :650px;
+    
+  }
+  .flex-c div {
+    padding: 15px;
+    justify-content: center;
+  }
+  .flex-c div:hover {
+    color: rgb(152, 193, 217);
+  }
+  #vs
+  {
+      background-color: whitesmoke;
+      font-family: "anu", sans-serif;
+      font-size: medium;
+      width: fit-content;
+      color: black;
+      border-top: solid;
+      border-left: none;
+      border-right: none;
+      border-bottom:solid ;
+      border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+    
+  }
+  #L{
+    border-top: solid;
+    border-left: solid;
+    border-right: none;
+    border-bottom:solid ;
+    border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+
+  }
+  #R{
+    border-top: solid;
+    border-right: solid;
+    border-bottom:solid ;
+    border-left: none;
+    border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+
+  }

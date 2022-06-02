@@ -31,39 +31,50 @@ class database {
                 $this->create_tournament($param_data);
             }
             else if($param_data["action"] == "get_tournament"){
-                $this->get_tournament($param_data);
+                $this->get_tournament();
             }
             else if($param_data["action"] == "create_player"){
                 $this->create_player($param_data);
-
             }
             else if($param_data["action"] == "get_player"){
-                $this->get_player($param_data);
-
+                $this->get_player();
             }
             else if($param_data["action"] == "create_venue"){
                 $this->create_venue($param_data);
-
             }
             else if($param_data["action"] == "get_venue"){
-                $this->get_venue($param_data);
-
+                $this->get_venue();
             }
             else if($param_data["action"] == "create_team"){
                 $this->create_team($param_data);
-
             }
             else if($param_data["action"] == "get_team"){
-                $this->get_team($param_data);
-
+                $this->get_team();
             }
             else if($param_data["action"] == "create_match"){
                 $this->create_match($param_data);
-
             }
             else if($param_data["action"] == "get_match"){
-                $this->get_match($param_data);
-
+                $this->get_match();
+            }
+            //START OF UPDATE
+            else if($param_data["action"] == "update_accounts"){
+                $this->update_accounts($param_data);
+            }
+            else if($param_data["action"] == "update_manager"){
+                $this->update_manager($param_data);
+            }
+            else if($param_data["action"] == "update_teams"){
+                $this->update_teams($param_data);
+            }
+            else if($param_data["action"] == "update_venue"){
+                $this->update_venue($param_data);
+            }
+            else if($param_data["action"] == "update_match"){
+                $this->update_match($param_data);
+            }
+            else if($param_data["action"] == "update_sponsored_by"){
+                $this->update_sponsered_by($param_data);
             }
             else if($param_data["action"] = "create_sponsor"){
                 $this->create_sponsor($param_data);
@@ -93,7 +104,7 @@ class database {
         $stmt->close();
     }
     
-    private function get_tournament($data){
+    private function get_tournament(){
         $stmt = "SELECT * from tournament";
         $result = $conn->query($stmt);
         $tournament = $result->fetch_assoc();
@@ -108,7 +119,7 @@ class database {
     
     }
     
-    private function get_player($data){
+    private function get_player(){
         $stmt = "SELECT * from player";
         $result = $conn->query($stmt);
         $player = $result->fetch_assoc();
@@ -123,7 +134,7 @@ class database {
     
     }
     
-    private function get_venue($data){
+    private function get_venue(){
         $sql = "SELECT * FROM venue";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
@@ -153,7 +164,7 @@ class database {
         $stmt->execute();
     }   
     
-    private function get_match($data){
+    private function get_match(){
         $sql = "SELECT * FROM matches";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
@@ -166,13 +177,27 @@ class database {
         $stmt->bind_param("s", $data["company_name"]);
         $stmt->execute();
     }
+
+    private function update_accounts($data){
+    }
+
+    private function update_manager($data){
+    }
+
+    private function update_teams($data){
+    }
+
+    private function update_venue($data){
+    }
+
+    private function update_match($data){
+    }
+
+    private function update_sponsered_by($data){
+    }
+
 }
 
-
-
-
-
-}
 
 $database = database::instance();
 header("HTTP/1.1 200 OK");
