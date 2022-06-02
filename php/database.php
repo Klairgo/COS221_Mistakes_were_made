@@ -65,13 +65,16 @@ class database {
                 $this->get_match($param_data);
 
             }
+            else if($param_data["action"] = "create_sponsor"){
+                $this->create_sponsor($param_data);
+            }
             else{
                 return $this->response(false, "Param does not exist");
             }
-            }
-            else {
-                return $this->response(false, "Param 'type' was not given");
-            }
+        }
+        else {
+            return $this->response(false, "Param 'type' was not given");
+        }
     
     }
 
@@ -92,7 +95,8 @@ class database {
     
     private function get_tournament($data){
         $stmt = "SELECT * from tournament";
-        $result = $stmt->query($stmt);
+        $result = $conn->query($stmt);
+        $return = $result->fetch_assoc();
     }
     
     private function create_player($data){
@@ -105,7 +109,8 @@ class database {
     
     private function get_player($data){
         $stmt = "SELECT * from player";
-        $result = $stmt->query($stmt);
+        $result = $conn->query($stmt);
+        $return = $result->fetch_assoc();
     }
     
     private function create_venue($data){
@@ -153,6 +158,12 @@ class database {
         $result = $stmt->get_result(); 
         $user = $result->fetch_assoc();
         return $user;
+
+    private function create_sponsor($data){
+        $stmt = $conn->prepare("INSERT INTO matches (company_name) VALUES (?)");
+        $stmt->bind_param("s", $data["company_name"]);
+        $stmt->execute();
+    }
 }
 
 
