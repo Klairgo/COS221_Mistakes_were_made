@@ -83,15 +83,9 @@ class database {
                 return $this->response(false, "Param does not exist");
             }
         }
-<<<<<<< Updated upstream
-        else {
-            return $this->response(false, "Param 'type' was not given");
-        }
-=======
         else{
             return $this->response(false, "Param 'type' was not given");
-            }
->>>>>>> Stashed changes
+        }
     
     }
 
@@ -168,24 +162,19 @@ class database {
         $stmt->execute();
     }   
     
-    private function get_match($data){
+    private function get_match(){
         $sql = "SELECT * FROM matches";
         $stmt = $conn->prepare($sql); 
         $stmt->execute();
         $result = $stmt->get_result(); 
         $user = $result->fetch_assoc();
         return $user;
-<<<<<<< Updated upstream
 
     private function create_sponsor($data){
         $stmt = $conn->prepare("INSERT INTO matches (company_name) VALUES (?)");
         $stmt->bind_param("s", $data["company_name"]);
         $stmt->execute();
     }
-}
-=======
-    }
->>>>>>> Stashed changes
 
     private function update_accounts($data){
     }
