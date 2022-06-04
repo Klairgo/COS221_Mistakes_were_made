@@ -40,9 +40,7 @@ function validate($role, $fname, $lname, $password, $conf_password, $email){
         return validate_response(false, "Connection Failure: ".$conn->connect_error);
     }
     else{
-        $salt = mt_rand(1000000, 9999999);
-        $salt = $salt + $email;
-        $salt = str_shuffle($salt);
+        $salt = $email;
         $saltPass = $salt + $password + $salt;
         $password_hashed = password_hash($saltPass, PASSWORD_ARGON2ID);
         //$password_hashed = password_hash($new_pass, PASSWORD_DEFAULT);
