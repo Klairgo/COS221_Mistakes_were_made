@@ -231,14 +231,28 @@ class database {
     private function update_match($data){
         global $conn;
         $stmt = $conn->prepare("UPDATE match SET ? = ? WHERE match_id = ?");
-        $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["match_id"]);
+        $stmt->bind_param("sss", $data["change_value"], $data["new_value"], $data["match_id"]);
         $stmt->execute();
     }
 
     private function update_sponsered_by($data){
         global $conn;
         $stmt = $conn->prepare("UPDATE sponsored_by SET ? = ? WHERE sponser_id = ?");
-        $stmt->bind_param("ss", $data["change_value"], $data["new_value"], $data["sponser_id"]);
+        $stmt->bind_param("sss", $data["change_value"], $data["new_value"], $data["sponser_id"]);
+        $stmt->execute();
+    }
+
+    public function delete_account($data){
+        global $conn;
+        $stmt = $conn->prepare("DELETE FROM account WHERE email = ?");
+        $stmt->bind_param("s", $data["delete_account_value"]);
+        $stmt->execute();
+    }
+
+    public function delete_sponsor($data){
+        global $conn;
+        $stmt = $conn->prepare("DELETE FROM sponsor WHERE company_name = ?");
+        $stmt->bind_param("s", $data["delete_sponsor_value"]);
         $stmt->execute();
     }
 
