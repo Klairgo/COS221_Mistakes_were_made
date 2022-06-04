@@ -11,7 +11,7 @@ function validate_response($success, $message = ""){
 }
 
 
-function validate($name, $surname, $email, $password, $conf_password){
+function validate($role, $fname, $lname, $password, $conf_password, $email){
     global $conn;
     $name_pat = '/[ `!,.<>@#$%^()_+\-&*=\[\]{};\':\"\\|\/?~]/';
     $pass_pat = "/^(?=\S{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/";
@@ -19,10 +19,10 @@ function validate($name, $surname, $email, $password, $conf_password){
     if(empty($name) || empty($surname) || empty($email) || empty($password) || empty($conf_password)){
         return validate_response(false, "Please enter all the fields");
     }
-    if(preg_match($name_pat, $name)){
+    if(preg_match($name_pat, $fname)){
         return validate_response(false, "Invalid name");
     }
-    if(preg_match($name_pat, $surname)){
+    if(preg_match($name_pat, $lname)){
         return validate_response(false, "Invalid surname");
     }
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -35,41 +35,24 @@ function validate($name, $surname, $email, $password, $conf_password){
         return validate_response(false, "Passwords does not match");
     }
 
-    //$connection = new mysqli("wheatley.cs.up.ac.za", "u21555258", "NVIEV6OIB2JF37YWX4TIXEGJI5RMK36M", "u21555258");
-    //$connection = Connectdb::instance();
-    
 
     if($conn->connect_error){
-        //die("Connection failure: ". $connection->connect_error);
         return validate_response(false, "Connection Failure: ".$conn->connect_error);
     }
     else{
-        $password_hashed = password_hash($password, PASSWORD_DEFAULT);
-        $api = bin2hex(random_bytes(20));
-        $check_api = "SELECT API_key FROM ACCOUNTS";
-        $api_result = $conn->query($check_api);
+        $salt = mt_rand(1000000, 9999999);
+        $salt = $salt + $email;
+        $salt = str_shuffle($salt);
+        $saltPass = $salt + $password + $salt;
+        $password_hashed = password_hash($saltPass, PASSWORD_ARGON2ID);
+        //$password_hashed = password_hash($new_pass, PASSWORD_DEFAULT);
 
-        //check if api exists
-        if($api_result->num_rows > 0){
-            do{
-                $api_found = false;
-                while($row = $api_result->fetch_assoc()){
-                    if($row["API_key"] == $api){
-                        $api = bin2hex(random_bytes(32));
-                        $api_found = true;
-                    }
-                }
-            }
-            while($api_found);
-
-        }
-
-        $query = "INSERT INTO ACCOUNTS (name, surname, email, password, API_key) VALUES ('$name', '$surname','$email', '$password_hashed', '$api')";
+        $query = "INSERT INTO accounts (role, fname, lname, password, salt, email) VALUES ('$role', '$fname','$lname', '$password_hashed', '$salt', '$email')";
 
 
         if($conn->query($query) === true){
             $conn->close();
-            return validate_response(true, "Success sql:".$api);
+            return validate_response(true, "Success sql:".$email);
         }
         else{
             $conn->close();

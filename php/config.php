@@ -1,8 +1,8 @@
 <?php
-define("HOST", "");
-define("USER", "");
-define("PASS", "");
-define ("DB", "");
+define("HOST", "wheatley.cs.up.ac.za");
+define("USER", "u21473103");
+define("PASS", "IHEDQVNUMXNLVVTZZUOCV4UPQL2N7LIN");
+define ("DB", "CSGO_stats");
 function openCon(){
     $conn = new mysqli(HOST, USER, PASS, DB) or die("Connect failed: %5\n". $conn ->error);    
     return $conn;
