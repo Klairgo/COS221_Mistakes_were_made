@@ -23,11 +23,8 @@ function val($email, $pass)
         setCookie("admin" , "true");
     }
     if ($checkIn != 0) {
-        $salt = "Select salt from account where email='$email'";
-        $resultSalt = mysqli_query($conn, $salt);
-        $row = mysqli_fetch_assoc($resultSalt);
-        $salted = $row['salt'];
-        $saltedPass = $salted . $pass;
+        $salt = $email;
+        $saltedPass = $salt . $pass .$salt;
         $hashPass = hash('sha256',$saltedPass);
         $pass = "Select password from account where email='$email";
         $resultPass = mysqli_query($conn, $pass);
