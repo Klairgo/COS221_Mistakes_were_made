@@ -16,7 +16,7 @@ function validate($role, $fname, $lname, $password, $conf_password, $email){
     $name_pat = '/[ `!,.<>@#$%^()_+\-&*=\[\]{};\':\"\\|\/?~]/';
     $pass_pat = "/^(?=\S{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/";
 
-    if(empty($name) || empty($surname) || empty($email) || empty($password) || empty($conf_password)){
+    if(empty($fname) || empty($lname) || empty($email) || empty($password) || empty($conf_password)){
         return validate_response(false, "Please enter all the fields");
     }
     if(preg_match($name_pat, $fname)){
@@ -45,7 +45,7 @@ function validate($role, $fname, $lname, $password, $conf_password, $email){
         $password_hashed = password_hash($saltPass, PASSWORD_ARGON2ID);
         //$password_hashed = password_hash($new_pass, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO accounts (role, fname, lname, password, salt, email) VALUES ('$role', '$fname','$lname', '$password_hashed', '$salt', '$email')";
+        $query = "INSERT INTO accounts (role, fname, lname, password, email) VALUES ('$role', '$fname','$lname', '$password_hashed', '$email')";
 
 
         if($conn->query($query) === true){

@@ -70,8 +70,8 @@ function signup(){
 
         ajax(
             {
-                "name" : name.value,
-                "surname" : surname.value,
+                "fname" : name.value,
+                "lname" : surname.value,
                 "email": email.value,
                 "password" : password.value,
                 "conf_password" : conf_password.value
