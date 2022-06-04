@@ -33,36 +33,44 @@ class database {
             if($param_data["action"] == "create_tournament"){
                 $this->create_tournament($param_data);
             }
-            else if($param_data["action"] == "get_tournament"){
-                $this->get_tournament();
-            }
             else if($param_data["action"] == "create_player"){
                 $this->create_player($param_data);
-            }
-            else if($param_data["action"] == "get_player"){
-                $this->get_player();
             }
             else if($param_data["action"] == "create_venue"){
                 $this->create_venue($param_data);
             }
-            else if($param_data["action"] == "get_venue"){
-                $this->get_venue();
-            }
             else if($param_data["action"] == "create_team"){
                 $this->create_team($param_data);
-            }
-            else if($param_data["action"] == "get_team"){
-                $this->get_team();
             }
             else if($param_data["action"] == "create_match"){
                 $this->create_match($param_data);
             }
-            else if($param_data["action"] == "get_match"){
-                $this->get_match();
-            }
             else if($param_data["action"] = "create_sponsor"){
                 $this->create_sponsor($param_data);
             }
+            //START OF GET
+            else if($param_data["action"] == "get_tournament"){
+                $this->get_tournament();
+            }
+            else if($param_data["action"] == "get_player"){
+                $this->get_player();
+            }
+            else if($param_data["action"] == "get_venue"){
+                $this->get_venue();
+            }
+            else if($param_data["action"] == "get_team"){
+                $this->get_team();
+            }
+            else if($param_data["action"] == "get_match"){
+                $this->get_match();
+            }
+            else if($param_data["action"] == "get_player_stats"){
+                $this->get_player_stats();
+            }   
+            else if($param_data["action"] == "get_match_stats"){
+                $this->get_match_stats();
+            }
+
             //START OF UPDATE
             else if($param_data["action"] == "update_accounts"){
                 $this->update_accounts($param_data);
@@ -255,6 +263,26 @@ class database {
         $stmt->bind_param("s", $data["delete_sponsor_value"]);
         $stmt->execute();
     }
+
+    private function get_player_stats(){
+        global $conn;
+        $sql = "SELECT * FROM player_statistics";
+        $stmt = $conn->prepare($sql); 
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $playerStats = $result->fetch_assoc();
+        return $playerStats;
+    } 
+
+    private function get_match_stats(){
+        global $conn;
+        $sql = "SELECT * FROM match_statistics";
+        $stmt = $conn->prepare($sql); 
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $matchStats = $result->fetch_assoc();
+        return $matchStats;
+    } 
 
 }
 
