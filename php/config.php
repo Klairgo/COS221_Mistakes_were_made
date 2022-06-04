@@ -1,10 +1,10 @@
 <?php
-define("HOST", "wheatley.cs.up.ac.za");
-define("USER", "u21473103");
-define("PASS", "IHEDQVNUMXNLVVTZZUOCV4UPQL2N7LIN");
-define ("DB", "CSGO_stats");
+define("HOST", "");
+define("USER", "");
+define("PASS", "");
+define ("DB", "");
 function openCon(){
-    $conn = new mysqli(HOST, USER, PASS, DB) or die("Conne5ct failed: %5\n". $conn ->error);    
+    $conn = new mysqli(HOST, USER, PASS, DB) or die("Connect failed: %5\n". $conn ->error);    
     return $conn;
 }
 function closeCon($conn){
