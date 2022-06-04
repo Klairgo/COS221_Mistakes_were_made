@@ -14,7 +14,7 @@ function response($success, $message = ""){
 if(isset($_POST["name"]) && isset($_POST["surname"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["conf_password"])){
      
      
-     $valid = validate($_POST["name"], $_POST["surname"], $_POST["email"], $_POST["password"], $_POST["conf_password"]);
+     $valid = validate($_POST["role"], $_POST["fname"], $_POST["lname"], $_POST["password"], $_POST["conf_password"], $_POST["email"]);
      if($valid["success"]){
           response(true, $valid["message"]);
      }
