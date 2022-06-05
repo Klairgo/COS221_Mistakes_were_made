@@ -163,6 +163,15 @@ class database {
                     return $this->response(false, $status);
                 }
             }
+            else if($param_data["action"] == "update_player_statistics"){
+                $status = $this->update_player_statistics($param_data);
+                if($status == "true"){
+                    return $this->response(true, "Sponsor updated");
+                }
+                else{
+                    return $this->response(false, $status);
+                }
+            }
             //This is where delete starts
             else if($param_data["action"] == "delete_account"){
                 $status = $this->delete_account($param_data);
@@ -495,6 +504,23 @@ class database {
         }
         return $arr;
     } 
+
+    private function update_player_statistics($data){
+        if(!isset($data["change_value"]) || !isset($data["new_value"]) || !isset($data["player_id"])){
+            return "Not all attributes were given";
+        }
+        global $conn;
+        $stmt = $conn->prepare("UPDATE player_statistics SET ". $data["change_value"]. " = ? WHERE sponsor_id = ?");
+        if($stmt == false){
+            return "Change attribute does not exist";
+        }
+        $stmt->bind_param("ss",$data["new_value"], $data["player_id"]);
+        $stmt->execute();
+        if($stmt->error){
+            return $stmt->error;
+        }
+        return true;
+    }
 
 }
 
