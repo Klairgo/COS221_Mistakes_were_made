@@ -18,7 +18,7 @@ function val($email, $pass)
     $checkIn = mysqli_num_rows($result);
     setcookie("admin" , "false");
 
-    if($checkUser = 'u21489549@tuks.co.za' || $checkUser= ""){//need to insert emails here
+    if($checkUser = 'u21489549@tuks.co.za' || $checkUser = "jake.mileham@gmail.com" || $checkUser = ""){//need to insert emails here
         $admin = true;
         setCookie("admin" , "true");
     }
@@ -31,7 +31,8 @@ function val($email, $pass)
 
         if ($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == true) {
             return validate_response(true, "Password match");
-            } else if($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == false){
+        } 
+        else if($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == false){
             return validate_response(true, "Password match");
         }
         else {
