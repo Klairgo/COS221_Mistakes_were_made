@@ -1,3 +1,8 @@
+<?php
+include_once("headerForAdmin.php");
+// echo (file_get_contents("header.php"));
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -14,9 +19,6 @@
 </head>
 
 <body>
-    <button type = "button">Create</button>
-    <button type = "button">Delete</button>
-    <button type = "button">Update</button>
      <section class="hero">
 
           <div class="hero-content">

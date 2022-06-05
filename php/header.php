@@ -21,7 +21,7 @@ $state ="to";
     <a id="tor"  onclick = "landonme('to')">Tournament </a>
     <a id="player"  onclick ="landonme('p')">Player</a>  
     <a id="team"  onclick ="landonme('te')">Team</a>      
-    <a id="logou" href="../index.php" onclick = "removeStorage()">Logout</a>
+    <a id="logout" href="../index.php" onclick = "removeStorage()">Logout</a>
     <a id = "admin" href="admin.php">Admin</a>
   </div>
 </body>
