@@ -79,11 +79,11 @@ function landonme(whoops) {
           },
           function(data){
               if(data.success){
-                string = ' <div class="fex-v"><a class="flex-t" onclick ="landonme("tev")"><div id="tname">Team Name</div><div id="trank">Rank</div></a></div>';
+                string = ' <div class="fex-v"><a class="flex-t" ><div id="tname">Team Name</div><div id="trank">Rank</div></a></div>';
 
                   for(i = 0; i < data.message.length; i++){
                     //chech to see if tournament name changed
-                    string += '<div class="fex-v"><a class="flex-t" onclick ="landonme("tev")"><div id="tname" style="font-family: Arial;">'+ 
+                    string += '<div class="fex-v"><a class="flex-t" ><div id="tname" style="font-family: Arial;">'+ 
                               data.message[i].name + '</div><div id="trank" style="font-family: Arial;">'+ 
                               data.message[i].ranking + '</div></a></div>';
                   }
