@@ -2,6 +2,14 @@ function element(id){
     return document.getElementById(id);
 }
 
+function show(id){
+    element(id).style.display = "";
+}
+
+function hide(id){
+    element(id).style.display = "none";
+}
+
 function  makeTeam(){
     const arr = ["team_id", "total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
     const head = ["Team Id", "Total earnings", "Name", "Tournament", "Manager id", "Ranking", "Location"]
@@ -150,14 +158,16 @@ function makeMatch(){
 }
 
 function makeSponsor(){
+    show("login");
+    hide("mess");
     arr = ["company_name"];
     head = ["Company Name"];
-    string = '<div id="login"> <h1>Create Sponsor</h1> <div id="signup_box"> ';
+    string = '<h1>Create Sponsor</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
     }
-    string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> </div>';
-    document.getElementById("main").innerHTML = string;
+    string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div>';
+    document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
         const info = {
             "action" : "create_sponsor" ,
@@ -165,10 +175,16 @@ function makeSponsor(){
         }
         ajax(info, function(data){
             if(data.success){
-                window.location.href="../php/admin";
+                hide("login");
+                element("mess_head").innerHTML = "Success"
+                element("mess_body").innerHTML = data.message;
+                show("mess");
             }
             else{
-               console.log(data.message);
+                hide("login");
+                element("mess_head").innerHTML = "Failed"
+                element("mess_body").innerHTML = data.message;
+                show("mess");
             }
         })
       });
