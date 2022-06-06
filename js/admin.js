@@ -407,6 +407,76 @@ function updateMatch(){
       });
 }
 
+function updateMatchStats(){
+    show("login");
+    hide("mess");
+    arr = ["change_value", "new_value", "match_id"];
+    head = ["Change Value", "New Value", "Match Id"];
+    string = '<h1>Update Match</h1> <div id="signup_box"> ';
+    for(let i = 0; i < arr.length; i++){
+        string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
+    }
+    string += '<div class="field"> <input type="submit" value="Update" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
+    document.getElementById("login").innerHTML = string;
+    document.getElementById("button").addEventListener("click", function() {
+        const info = {
+            "action" : "update_match_stats" ,
+            "change_value" : element(arr[0]).value,
+            "new_value" : element(arr[1]).value,
+            "match_id" : element(arr[2]).value,
+        }
+        ajax(info, function(data){
+            if(data.success){
+                hide("login");
+                element("mess_head").innerHTML = "Success"
+                element("mess_body").innerHTML = data.message;
+                show("mess");
+            }
+            else{
+                hide("login");
+                element("mess_head").innerHTML = "Failed"
+                element("mess_body").innerHTML = data.message;
+                show("mess");
+            }
+        })
+      });
+}
+
+function updatePlayerStats(){
+    show("login");
+    hide("mess");
+    arr = ["change_value", "new_value", "player_id"];
+    head = ["Change Value", "New Value", "Player Id"];
+    string = '<h1>Update Match</h1> <div id="signup_box"> ';
+    for(let i = 0; i < arr.length; i++){
+        string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
+    }
+    string += '<div class="field"> <input type="submit" value="Update" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
+    document.getElementById("login").innerHTML = string;
+    document.getElementById("button").addEventListener("click", function() {
+        const info = {
+            "action" : "update_player_stats" ,
+            "change_value" : element(arr[0]).value,
+            "new_value" : element(arr[1]).value,
+            "match_id" : element(arr[2]).value,
+        }
+        ajax(info, function(data){
+            if(data.success){
+                hide("login");
+                element("mess_head").innerHTML = "Success"
+                element("mess_body").innerHTML = data.message;
+                show("mess");
+            }
+            else{
+                hide("login");
+                element("mess_head").innerHTML = "Failed"
+                element("mess_body").innerHTML = data.message;
+                show("mess");
+            }
+        })
+      });
+}
+
 function updateSponsoredBy(){
     show("login");
     hide("mess");

@@ -38,6 +38,8 @@ $state = "to";
       <a onclick="updateTeams()">Teams</a>
       <a onclick="updateVenue()">Venue</a>
       <a onclick="updateMatch()">Match</a>
+      <a onclick="updateMatchStats()">Match Statistics</a>
+      <a onclick="updatePlayerStats()">Player Statistics</a>
       <a onclick="updateSponsoredBy()">Sponsor</a>
     </div>
   </div>

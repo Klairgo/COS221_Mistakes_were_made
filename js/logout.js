@@ -7,7 +7,7 @@ function removeStorage() {
 
 function getCookie(cName) {
     const name = cName + "=";
-    const cDecoded = decodeURIComponent(document.cookie); //to be careful
+    const cDecoded = decodeURIComponent(document.cookie);
     const cArr = cDecoded.split('; ');
     let res;
     cArr.forEach(val => {
@@ -16,11 +16,11 @@ function getCookie(cName) {
     return res
   }
 
-  window.addEventListener( "pageshow", function ( event ) {
+  window.addEventListener( "pageshow", function ( event ) { // must just check
     var historyTraversal = event.persisted || 
                            ( typeof window.performance != "undefined" && 
                                 window.performance.navigation.type === 2 );
     if ( historyTraversal ) {
       window.location.reload();
     }
-  });
+  });s
