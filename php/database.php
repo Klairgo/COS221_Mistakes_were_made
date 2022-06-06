@@ -102,7 +102,7 @@ class database {
                 return $this->response(true, $this->get_match());
             }
             else if($param_data["action"] == "get_player_stats"){
-                return $this->response(true, $this->get_player_stats());
+                return $this->response(true, $this->get_player_stats($param_data));
             }   
             else if($param_data["action"] == "get_match_stats"){
                 return $this->response(true, $this->get_match_stats());
@@ -493,10 +493,15 @@ class database {
         return true;
     }
 
-    private function get_player_stats(){
+    private function get_player_stats($data){
+        if(!isset($data["gamer_tag"])){
+            return "Not all attributes were given";
+        }
         global $conn;
-        $stmt = "SELECT * from player AS P INNER JOIN player_statistics AS S ON P.player_id = S.player_id";
-        $result = $conn->query($stmt); 
+        $stmt = $conn->prepare("SELECT * FROM (player AS P INNER JOIN player_statistics AS S ON P.player_id = S.player_id) WHERE P.gamer_tag = ?");
+        $stmt->bind_param("s", $data["gamer_tag"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
         $arr = [];
         while($row = $result->fetch_assoc()){
             array_push($arr, $row);

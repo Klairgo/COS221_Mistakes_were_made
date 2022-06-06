@@ -13,8 +13,8 @@ function hide(id){
 function  makeTeam(){
     show("login");
     hide("mess");
-    const arr = ["team_id", "total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
-    const head = ["Team Id", "Total earnings", "Name", "Tournament", "Manager id", "Ranking", "Location"]
+    const arr = ["total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
+    const head = ["Total earnings", "Name", "Tournament", "Manager id", "Ranking", "Location"]
     string = '<h1>Create Team</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -22,15 +22,15 @@ function  makeTeam(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
+        if((Number.isInteger(element(arr[0]).value)) == true && check_name(element(arr[1]).value) == false && Number.isInteger(element(arr[3]).value) == true && Number.isInteger(element(arr[4]).value) == true){
         const info = {
             "action" : "create_team" ,
-            "team_id" : element(arr[0]).value,
-            "total_earnings" : element(arr[1]).value,
-            "name" : element(arr[2]).value,
-            "tournament" : element(arr[3]).value,
-            "manager_id" : element(arr[4]).value,
-            "ranking" : element(arr[5]).value,
-            "location" : element(arr[6]).value,
+            "total_earnings" : element(arr[0]).value,
+            "name" : element(arr[1]).value,
+            "tournament" : element(arr[2]).value,
+            "manager_id" : element(arr[3]).value,
+            "ranking" : element(arr[4]).value,
+            "location" : element(arr[5]).value,
         }
         ajax(info, function(data){
             if(data.success){
@@ -46,16 +46,21 @@ function  makeTeam(){
                 show("mess");
             }
         })
-      });
+    }
+    else{
+        alert("Your information is incorrect!");
+    }
+});
     
 }
+
 
 
 function makeTournament(){
     show("login");
     hide("mess");
-    arr = ["venue_id", "first_place_id", "second_place_id", "third_place_id", "name"];
-    head = ["Venue id", "First place id", "Second place id", "Third place id", "Name"];
+    arr = ["first_place_id", "second_place_id", "third_place_id", "name"];
+    head = ["First place id", "Second place id", "Third place id", "Name"];
     string = '<h1>Create Tournament</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -63,13 +68,13 @@ function makeTournament(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
+        if(Number.isInteger(element(arr[0]).value) == true && Number.isInteger(element(arr[1]).value) == true && Number.isInteger(element(arr[2]).value) == true && check_name(element(arr[3].value)) == false){
         const info = {
             "action" : "create_tournament" ,
-            "venue_id" : element(arr[0]).value,
-            "first_place_id" : element(arr[1]).value,
-            "second_place_id" : element(arr[2]).value,
-            "third_place_id" : element(arr[3]).value,
-            "name" : element(arr[4]).value,
+            "first_place_id" : element(arr[0]).value,
+            "second_place_id" : element(arr[1]).value,
+            "third_place_id" : element(arr[2]).value,
+            "name" : element(arr[3]).value,
         }
         ajax(info, function(data){
             if(data.success){
@@ -85,7 +90,11 @@ function makeTournament(){
                 show("mess");
             }
         })
-      });
+    }
+    else{
+        console.log("reached")
+        alert("Your information is incorrect!");
+    }});
 }
 
 function makePlayer(){
@@ -100,6 +109,7 @@ function makePlayer(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
+        if(check_name(element(arr[0]).value) == false && Number.isInteger(element(arr[1]).value) == true && Number.isInteger(element(arr[2]).value) == true && check_name(element(arr[3]).value) == false){
         const info = {
             "action" : "create_player" ,
             "name" : element(arr[0]).value,
@@ -121,7 +131,9 @@ function makePlayer(){
                 show("mess");
             }
         })
-      });
+      }else{
+        alert("Your information is incorrect!");
+      }});
 }
 
 function makeVenue(){
@@ -136,6 +148,7 @@ function makeVenue(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
+        if(check_name(element(arr[0]).value) == false && check_email(element(arr[2]).value) == false && Number.isInteger(element(arr[3]).value) == true){
         const info = {
             "action" : "create_venue" ,
             "venue_name" : element(arr[0]).value,
@@ -157,14 +170,16 @@ function makeVenue(){
                 show("mess");
             }
         })
-      });
+      }else{
+        alert("Your information is incorrect!");
+      }});
 }
 
 function makeMatch(){
     show("login");
     hide("mess");
-    arr = ["data_time", "map_id", "team1_id", "team2_id", "tournament_id"];
-    head = ["Date time", "Map id", "Team1 id", "Team2 id", "Tournament id"];
+    arr = ["map_id", "team1_id", "team2_id", "tournament_id"];
+    head = ["Map id", "Team1 id", "Team2 id", "Tournament id"];
     string = '<h1>Create Match</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -172,13 +187,13 @@ function makeMatch(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
+        if(Number.isInteger(element(arr[0]).value) && Number.isInteger(element(arr[1]).value) && Number.isInteger(element(arr[2]).value) && Number.isInteger(element(arr[3]).value)){
         const info = {
             "action" : "create_match" ,
-            "data_time" : element(arr[0]).value,
-            "map_id" : element(arr[1]).value,
-            "team1_id" : element(arr[2]).value,
-            "team2_id" : element(arr[3]).value,
-            "tournament_id" : element(arr[4]).value
+            "map_id" : element(arr[0]).value,
+            "team1_id" : element(arr[1]).value,
+            "team2_id" : element(arr[2]).value,
+            "tournament_id" : element(arr[3]).value
         }
         ajax(info, function(data){
             if(data.success){
@@ -194,7 +209,9 @@ function makeMatch(){
                 show("mess");
             }
         })
-      });
+      }else{
+        alert("Your information is incorrect!");
+      }});
 }
 
 function makeSponsor(){
@@ -209,6 +226,7 @@ function makeSponsor(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/>';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
+        if(check_name(element(arr[0].value)) == false){
         const info = {
             "action" : "create_sponsor" ,
             "company_name" : element(arr[0]).value,
@@ -228,7 +246,9 @@ function makeSponsor(){
                 show("mess");
             }
         })
-      });
+      }else{
+        alert("Your information is incorrect!");
+      }});
 }
 
 function updateAccount(){
@@ -596,3 +616,12 @@ function ajax(data, callback){
     req.send(JSON.stringify(data));
 }
 
+const check_name = (name) => {
+    const reg = /[ `!,.<>@#$%^()_+\-&*=\[\]{};':"\\|\/?~]/; 
+    return reg.test(name);
+}
+
+const check_email = (email) => {
+    const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
+    return reg.test(email);
+};
