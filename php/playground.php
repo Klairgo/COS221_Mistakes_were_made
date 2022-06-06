@@ -23,7 +23,9 @@ include_once("header.php");
     <section class="hero">
 
         <div class="hero-content" id="main">
-           
+           <div class="flex-z">
+               
+           </div>
         </div>
 
     </section>
