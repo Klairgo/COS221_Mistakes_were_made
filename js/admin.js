@@ -14,7 +14,7 @@ function  makeTeam(){
     show("login");
     hide("mess");
     const arr = ["total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
-    const head = ["Total earnings", "Name", "Tournament", "Manager id", "Ranking", "Location"]
+    const head = ["Total earnings", "Name", "Tournament wins", "Manager id", "Ranking", "Location"]
     string = '<h1>Create Team</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -27,7 +27,7 @@ function  makeTeam(){
             "action" : "create_team" ,
             "total_earnings" : element(arr[0]).value,
             "name" : element(arr[1]).value,
-            "tournament" : element(arr[2]).value,
+            "tour_wins" : element(arr[2]).value,
             "manager_id" : element(arr[3]).value,
             "ranking" : element(arr[4]).value,
             "location" : element(arr[5]).value,
