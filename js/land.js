@@ -16,7 +16,7 @@ function landonme(whoops) {
                   //create first tournament name
                   t_name = data.message[0].tournament_name;
                   //create first heading
-                  string  =  "<div><h1>" + t_name + "</h1></div>" + "<div><h1>" + date + "</h1></div>";
+                  string  =  "<div><h1 style='font-size: 30px;'>" + t_name + "</h1></div>" + "<div><h1>" + date + "</h1></div>";
                   for(i = 0; i < data.message.length; i++){
                     //chech to see if tournament name changed
                     if(data.message[i].tournament_name != t_name){

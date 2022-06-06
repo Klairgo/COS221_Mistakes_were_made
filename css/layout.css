@@ -15,7 +15,7 @@
     width: fit-content;
   }
   .flex-v div {
-    font-size: medium;
+    font-size: 23px;
   }
   .flex-c {
     display: flex;
