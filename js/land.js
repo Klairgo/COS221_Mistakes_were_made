@@ -4,33 +4,40 @@ function landonme(whoops) {
       document.getElementById("tor").style.backgroundColor = "#DDA62A";
       document.getElementById("player").style.backgroundColor = "black";
       document.getElementById("team").style.backgroundColor = "black";
-      document.getElementById("main").innerHTML =
-        ' <div class="flex-v"><div class="flex-c" id="L"></div><div class="flex-c" id="vs">VS</div><div class="flex-c" id="R"></div></div>';
 
         ajax(
             {
-                "action" : "get_tournamet" ,
+                "action" : "get_tournament" ,
             },
             function(data){
                 if(data.success){
-                  /*
-                    "data.message" format:
-                      "message": [
-                                  {
-                                    "tournament_id": "1",
-                                    "venue_id": "1",
-                                    "first_place_id": "1",
-                                    "second_place_id": "2",
-                                    "third_place_id": "3",
-                                    "name": "PGL Major Antwerp 2022"
-                                  }
-                                ]
-
-                    Get data in "data.message"
-                    data.message[0].tournament_id  (I think)
-                  */
+                  //create first date
+                  date = data.message[0].data_time.substring(0, 10);
+                  //create first tournament name
+                  t_name = data.message[0].tournament_name;
+                  //create first heading
+                  string  =  "<div><h1 style='font-size: 30px;'>" + t_name + "</h1></div>" + "<div><h1>" + date + "</h1></div>";
+                  for(i = 0; i < data.message.length; i++){
+                    //chech to see if tournament name changed
+                    if(data.message[i].tournament_name != t_name){
+                      t_name = data.message[i].tournament_name;
+                      string += "<div><h1>" + t_name + "</h1></div>";
+                    }
+                    //check to see if date change
+                    else if(data.message[i].data_time.substring(0, 10) != date){
+                      date = data.message[i].data_time.substring(0, 10);
+                      string += "<div><h1>" + date + "</h1></div>";
+                    }
+                    string += '<div class="flex-v"><div class="flex-c" id="L" style="font-family: Arial;">'+ 
+                                data.message[i].team1_name + '</div><div class="flex-c" id="vs">'+ 
+                                data.message[i].data_time.substring(11, 21)+ 
+                                '</div><div class="flex-c" id="R" style="font-family: Arial">'+ 
+                                data.message[i].team2_name + '</div></div>';
+                  }
+                  document.getElementById("main").innerHTML = string;
                 }
                 else{
+                  console.log("error");
                   //Show error
                 }
             }
@@ -65,7 +72,6 @@ function landonme(whoops) {
       document.getElementById("player").style.backgroundColor = "black";
       document.getElementById("team").style.backgroundColor = "#DDA62A";
       document.getElementById("main").innerHTML =
-        ' <div class="fex-v"><a class="flex-t" onclick ="landonme("tev")"><div id="tname">Team Name</div><div id="trank">Rank</div></a></div>';
 
         ajax(
           {
@@ -73,7 +79,15 @@ function landonme(whoops) {
           },
           function(data){
               if(data.success){
-                //handle data.message
+                string = ' <div class="fex-v"><a class="flex-t" onclick ="landonme("tev")"><div id="tname">Team Name</div><div id="trank">Rank</div></a></div>';
+
+                  for(i = 0; i < data.message.length; i++){
+                    //chech to see if tournament name changed
+                    string += '<div class="fex-v"><a class="flex-t" onclick ="landonme("tev")"><div id="tname" style="font-family: Arial;">'+ 
+                              data.message[i].name + '</div><div id="trank" style="font-family: Arial;">'+ 
+                              data.message[i].ranking + '</div></a></div>';
+                  }
+                  document.getElementById("main").innerHTML = string;
               }
               else{
                 //show error

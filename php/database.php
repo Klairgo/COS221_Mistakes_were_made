@@ -163,15 +163,6 @@ class database {
                     return $this->response(false, $status);
                 }
             }
-            else if($param_data["action"] == "update_player_statistics"){
-                $status = $this->update_player_statistics($param_data);
-                if($status == "true"){
-                    return $this->response(true, "Sponsor updated");
-                }
-                else{
-                    return $this->response(false, $status);
-                }
-            }
             //This is where delete starts
             else if($param_data["action"] == "delete_account"){
                 $status = $this->delete_account($param_data);
@@ -226,7 +217,7 @@ class database {
     
     private function get_tournament(){
         global $conn;
-        $stmt = "SELECT * from tournament";
+        $stmt = "SELECT E.name AS tournament_name, T1.name AS team1_name, T2.name AS team2_name, data_time FROM teams AS T2 INNER JOIN (teams AS T1 INNER JOIN (tournament AS E INNER JOIN matches AS D ON E.tournament_id=D.tournament_id) ON T1.team_id = D.team1_id) ON T2.team_id = D.team2_id;";
         $result = $conn->query($stmt);
         $arr = [];
         while($row = $result->fetch_assoc()){
@@ -304,7 +295,7 @@ class database {
     
     private function get_team(){
         global $conn;
-        $stmt = "SELECT * FROM teams";
+        $stmt = "SELECT * FROM teams ORDER BY ranking";
         $result = $conn->query($stmt); 
         $arr = [];
         while($row = $result->fetch_assoc()){
@@ -504,23 +495,6 @@ class database {
         }
         return $arr;
     } 
-
-    private function update_player_statistics($data){
-        if(!isset($data["change_value"]) || !isset($data["new_value"]) || !isset($data["player_id"])){
-            return "Not all attributes were given";
-        }
-        global $conn;
-        $stmt = $conn->prepare("UPDATE player_statistics SET ". $data["change_value"]. " = ? WHERE sponsor_id = ?");
-        if($stmt == false){
-            return "Change attribute does not exist";
-        }
-        $stmt->bind_param("ss",$data["new_value"], $data["player_id"]);
-        $stmt->execute();
-        if($stmt->error){
-            return $stmt->error;
-        }
-        return true;
-    }
 
 }
 
