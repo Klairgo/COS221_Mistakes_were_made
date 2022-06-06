@@ -39,6 +39,29 @@ function makeTournament(){
     arr = ["venue_id", "first_place_id", "second_place_id", "third_place_id", "name"];
     head = ["Venue id", "First place id", "Second place id", "Third place id", "Name"];
     string = '<div id="login"> <h1>Make Tournament</h1>';
+    for(let i = 0; i < team.length; i++){
+        string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';        
+    }
+    string += '<div class="field"> <input type="submit" value="Register" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
+    document.getElementById("main").innerHTML = string;
+    document.getElementById("button").addEventListener("click", function() {
+        const info = {
+            "action" : "create_team" ,
+            "venue_id" : element(team[0]).value,
+            "first_place_id" : element(team[1]).value,
+            "second_place_id" : element(team[2]).value,
+            "third_place_id" : element(team[3]).value,
+            "name" : element(team[4]).value,
+        }
+        ajax(info, function(data){
+            if(data.success){
+                window.location.href="../php/admin";
+            }
+            else{
+               showError(data.message);
+            }
+        })
+      });
 }
 
 function makePlayer(){
@@ -78,15 +101,78 @@ function updateMatch(){
 }
 
 function updateSponsoredBy(){
-
+    arr = ["email"];
+    head = ["Email"];
+    string = '<div id="login"> <h1>Delete Account</h1>';
+    for(let i = 0; i < arr.length; i++){
+        string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
+    }
+    string += '<div class="field"> <input type="submit" value="Delete" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
+    document.getElementById("main").innerHTML = string;
+    document.getElementById("button").addEventListener("click", function() {
+        const info = {
+            "action" : "create_team" ,
+            "company_name" : element(team[0]).value,
+        }
+        ajax(info, function(data){
+            if(data.success){
+                window.location.href="../php/admin";
+            }
+            else{
+               showError(data.message);
+            }
+        })
+      });
 }
 
-function deleteccount(){
-
+function deleteAccount(){
+    arr = ["email"];
+    head = ["Email"];
+    string = '<div id="login"> <h1>Delete Account</h1>';
+    for(let i = 0; i < arr.length; i++){
+        string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
+    }
+    string += '<div class="field"> <input type="submit" value="Delete" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
+    document.getElementById("main").innerHTML = string;
+    document.getElementById("button").addEventListener("click", function() {
+        const info = {
+            "action" : "create_team" ,
+            "company_name" : element(team[0]).value,
+        }
+        ajax(info, function(data){
+            if(data.success){
+                window.location.href="../php/admin";
+            }
+            else{
+               showError(data.message);
+            }
+        })
+      });
 }
 
 function deleteSponsor(){
-
+    arr = ["company_name"];
+    head = ["Company Name"];
+    string = '<div id="login"> <h1>Delete Sponsor</h1>';
+    for(let i = 0; i < team.length; i++){
+        string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
+    }
+    string += '<div class="field"> <input type="submit" value="Delete" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
+    document.getElementById("main").innerHTML = string;
+    document.getElementById("button").addEventListener("click", function() {
+        const info = {
+            "action" : "create_team" ,
+            "company_name" : element(team[0]).value,
+        }
+        ajax(info, function(data){
+            if(data.success){
+                window.location.href="../php/admin";
+            }
+            else{
+               showError(data.message);
+            }
+        })
+      });
 }
 
 

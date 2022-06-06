@@ -1,3 +1,4 @@
-function removeStorage(){
+function removeStorage() {
     localStorage.clear();
 }
+

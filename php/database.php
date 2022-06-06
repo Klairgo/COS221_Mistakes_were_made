@@ -154,6 +154,24 @@ class database {
                     return $this->response(false, $status);
                 }
             }
+            else if($param_data["action"] == "update_match_stats"){
+                $status = $this->update_match_stats($param_data);
+                if($status == "true"){
+                    return $this->response(true, "Match Stats updated");
+                }
+                else{
+                    return $this->response(false, $status);
+                }
+            }
+            else if($param_data["action"] == "update_player_stats"){
+                $status = $this->update_player_stats($param_data);
+                if($status == "true"){
+                    return $this->response(true, "Match Stats updated");
+                }
+                else{
+                    return $this->response(false, $status);
+                }
+            }
             else if($param_data["action"] == "update_sponsored_by"){
                 $status = $this->update_sponsered_by($param_data);
                 if($status == "true"){
@@ -496,7 +514,42 @@ class database {
         return $arr;
     } 
 
+    private function update_match_stats($data){
+        if(!isset($data["change_value"]) || !isset($data["new_value"]) || !isset($data["match_id "])){
+            return "Not all attributes were given";
+        }
+        global $conn;
+        $stmt = $conn->prepare("UPDATE match_statistics SET ". $data["change_value"]. " = ? WHERE match_id = ?");
+        if($stmt == false){
+            return "Change attribute does not exist";
+        }
+        $stmt->bind_param("ss",$data["new_value"], $data["match_id "]);
+        $stmt->execute();
+        if($stmt->error){
+            return $stmt->error;
+        }
+        return true;
+    }
+
+    private function update_player_stats($data){
+        if(!isset($data["change_value"]) || !isset($data["new_value"]) || !isset($data["player_id"])){
+            return "Not all attributes were given";
+        }
+        global $conn;
+        $stmt = $conn->prepare("UPDATE player_statistics SET ". $data["change_value"]. " = ? WHERE palyer_id = ?");
+        if($stmt == false){
+            return "Change attribute does not exist";
+        }
+        $stmt->bind_param("ss",$data["new_value"], $data["player_id"]);
+        $stmt->execute();
+        if($stmt->error){
+            return $stmt->error;
+        }
+        return true;
+    }
 }
+
+
 
 
 $database = database::instance();
