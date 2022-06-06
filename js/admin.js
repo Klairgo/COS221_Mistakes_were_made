@@ -3,23 +3,24 @@ function element(id){
 }
 
 function  makeTeam(){
-    const team = ["team_id", "total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
-    string = '<div id="login"> <h1>Create Team</h1>';
+    const arr = ["team_id", "total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
+    const head = ["Team Id", "Total earnings", "Name", "Tournament", "Manager id", "Ranking", "Location"]
+    string = '<div id="login"> <h1>Create Team</h1> <div id="signup_box"> ';
     for(let i = 0; i < team.length; i++){
-        string += ' <div id="signup_box"> <div class="field"> <label for="name">' + team[i] + '</label> <input type="text" name="name" id="' + team[i] + '" placeholder="Enter your name"/> <small></small> </div>';      
+        string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
     }
-    string += '<div class="field"> <input type="submit" value="Register" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
+    string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> </div>';
     document.getElementById("main").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
         const info = {
             "action" : "create_team" ,
-            "team_id" : element(team[0]).value,
-            "total_earnings" : element(team[1]).value,
-            "name" : element(team[2]).value,
-            "tournament" : element(team[3]).value,
-            "manager_id" : element(team[4]).value,
-            "ranking" : element(team[5]).value,
-            "location" : element(team[6]).value,
+            "team_id" : element(arr[0]).value,
+            "total_earnings" : element(arr[1]).value,
+            "name" : element(arr[2]).value,
+            "tournament" : element(arr[3]).value,
+            "manager_id" : element(arr[4]).value,
+            "ranking" : element(arr[5]).value,
+            "location" : element(arr[6]).value,
         }
         ajax(info, function(data){
             if(data.success){
@@ -35,7 +36,8 @@ function  makeTeam(){
 
 
 function makeTournament(){
-    arr = ["Venue Id", "First place id", "second_place_id", "third_place_id", "name"];
+    arr = ["venue_id", "first_place_id", "second_place_id", "third_place_id", "name"];
+    head = ["Venue id", "First place id", "Second place id", "Third place id", "Name"];
     string = '<div id="login"> <h1>Make Tournament</h1>';
 }
 
