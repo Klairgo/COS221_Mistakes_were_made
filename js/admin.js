@@ -340,11 +340,11 @@ function updateSponsoredBy(){
 function deleteccount(){
     arr = ["email"];
     head = ["Email"];
-    string = '<div id="login"> <h1>Delete Account</h1>';
+    string = '<div id="login"> <h1>Delete Account</h1> <div id="signup_box">';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
     }
-    string += '<div class="field"> <input type="submit" value="Delete" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
+    string += '<div class="field"> <input type="submit" value="Delete" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div></div>';
     document.getElementById("main").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
         const info = {
@@ -365,11 +365,11 @@ function deleteccount(){
 function deleteSponsor(){
     arr = ["company_name"];
     head = ["Company Name"];
-    string = '<div id="login"> <h1>Delete Sponsor</h1>';
+    string = '<div id="login"> <h1>Delete Sponsor</h1> <div id="signup_box">';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
     }
-    string += '<div class="field"> <input type="submit" value="Delete" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
+    string += '<div class="field"> <input type="submit" value="Delete" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div> </div>';
     document.getElementById("main").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
         const info = {
