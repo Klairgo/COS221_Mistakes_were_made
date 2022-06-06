@@ -23,10 +23,17 @@ include_once("headerForAdmin.php");
      <section class="hero">
 
           <div class="hero-content" id = "main">
-              
-          </div>
+               <div id="login" style="display:none;"></div>
 
+               <div id="mess" style="display: none">
+                    <h2 id="mess_head" style="text-align: center; margin-top: 30px"></h2>
+                    <div id="mess_message">
+                         <div id="mess_body" style="font-size: 25px; font-family: Arial"></div>
+                    </div>
+               </div>
+          </div>
      </section>
+     
 
 
 </body>
