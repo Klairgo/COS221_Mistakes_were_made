@@ -4,14 +4,14 @@ function element(id){
 
 function  makeTeam(){
     const team = ["team_id", "total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
-    string = '<div id="login"> <h1>Create Team</h1>'
+    string = '<div id="login"> <h1>Create Team</h1>';
     for(let i = 0; i < team.length; i++){
         string += ' <div id="signup_box"> <div class="field"> <label for="name">' + team[i] + '</label> <input type="text" name="name" id="' + team[i] + '" placeholder="Enter your name"/> <small></small> </div>';      
     }
     string += '<div class="field"> <input type="submit" value="Register" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
-    
+    document.getElementById("main").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
-        let info = {
+        const info = {
             "action" : "create_team" ,
             "team_id" : element(team[0]).value,
             "total_earnings" : element(team[1]).value,
@@ -30,7 +30,6 @@ function  makeTeam(){
             }
         })
       });
-    
     
 }
 

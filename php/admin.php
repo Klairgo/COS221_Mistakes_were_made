@@ -21,7 +21,7 @@ include_once("headerForAdmin.php");
 <body>
      <section class="hero">
 
-          <div class="hero-content">
+          <div class="hero-content" id = "main">
               
           </div>
 
