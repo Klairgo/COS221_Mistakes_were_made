@@ -13,12 +13,12 @@ function  makeTeam(){
 }
 
 function makeTournament(){
-    arr = ["venue_id", "first_place_id", "second_place_id", "third_place_id", "name"];
+    arr = ["Venue Id", "First place id", "second_place_id", "third_place_id", "name"];
     string = '<div id="login"> <h1>Make Tournament</h1>';
 }
 
 function makePlayer(){
-
+    arr = ["Name", "Team Id", "Gamertag", "Country"];
 }
 
 function makeVenue(){
