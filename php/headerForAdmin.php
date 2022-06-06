@@ -17,7 +17,6 @@ $state = "to";
 </head>
 
 <body>
-  <!--nav bar-->
   <div class="dropdown">
     <button class="dropbtn">Create</button>
     <div class="dropdown-content">
