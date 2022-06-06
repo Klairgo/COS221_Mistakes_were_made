@@ -28,14 +28,8 @@ include_once("headerForAdmin.php");
                <div id="mess" style="display: none">
                     <h2 id="mess_head" style="text-align: center; margin-top: 30px"></h2>
                     <div id="mess_message">
-                         <div id="mess_body">Name already exists</div>
+                         <div id="mess_body" style="font-size: 25px; font-family: Arial"></div>
                     </div>
-                    <input
-                         type="submit"
-                         id="mess_reg"
-                         value="Register"
-                         onclick="showregister()"
-                    />
                </div>
           </div>
      </section>
