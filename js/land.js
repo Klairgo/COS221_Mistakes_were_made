@@ -93,7 +93,10 @@ function landonme(whoops) {
                 //show error
               }
           }
+          
         );
+        
+        // document.getElementsByClassName("hero").style.width = "100vh";
 
       break;
 

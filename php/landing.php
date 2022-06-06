@@ -1,6 +1,6 @@
 <?php
-include_once("header.php");
-// echo (file_get_contents("header.php"));
+// include_once("header.php");
+ echo (file_get_contents("header.php"));
 ?>
 
 <!DOCTYPE html>
