@@ -25,7 +25,7 @@ $state = "to";
       <a onclick="makeTournament()">Tournament</a>
       <a onclick="makePlayer()">Player</a>
       <a onclick="makeVenue()">Venue</a>
-      <a onclick="makeMatch(`hello`)">Match</a>
+      <a onclick="makeMatch()">Match</a>
       <a onclick="makeSponsor()">Sponsor</a>
     </div>
   </div>
