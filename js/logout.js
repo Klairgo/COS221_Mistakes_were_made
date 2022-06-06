@@ -23,4 +23,4 @@ function getCookie(cName) {
     if ( historyTraversal ) {
       window.location.reload();
     }
-  });s
+  });

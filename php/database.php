@@ -249,8 +249,8 @@ class database {
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"]); 
+        $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country) VALUES (?, ?, ?, ?,?)");
+        $stmt->bind_param("ssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"], $data["player_img"]); 
         $stmt->execute();
         if($stmt->error){
             return $stmt->error;
