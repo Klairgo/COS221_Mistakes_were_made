@@ -15,6 +15,7 @@ include_once("headerForAdmin.php");
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      </meta>
      <link rel="stylesheet" href="../css/hero.css">
+     <link rel="stylesheet" href="../css/login.css">
      
 </head>
 
