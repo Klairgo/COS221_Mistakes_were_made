@@ -58,6 +58,15 @@ function landonme(whoops) {
           function(data){
               if(data.success){
                 //handle data.message
+                string = ' <div class="fex-v"><a class="flex-t" ><div id="tname">Gamer Tag</div><div id="trank">World Rank</div></a></div>';
+
+                for(i = 0; i < data.message.length; i++){
+                  //chech to see if tournament name changed
+                  string += '<div class="fex-v" ><a class="flex-t" onclick="landonme(`tev`)" ><div id="tname" style="font-family: Arial;">'+ 
+                            data.message[i].gamer_tag + '</div><div id="trank" style="font-family: Arial;">'+ 
+                            data.message[i].world_ranking + '</div></a></div>';
+                }
+                document.getElementById("main").innerHTML = string;
               }
               else{
                 //show error
@@ -83,7 +92,7 @@ function landonme(whoops) {
 
                   for(i = 0; i < data.message.length; i++){
                     //chech to see if tournament name changed
-                    string += '<div class="fex-v"><a class="flex-t" ><div id="tname" style="font-family: Arial;">'+ 
+                    string += '<div class="fex-v" ><a class="flex-t"  ><div id="tname"  style="font-family: Arial;">'+ 
                               data.message[i].name + '</div><div id="trank" style="font-family: Arial;">'+ 
                               data.message[i].ranking + '</div></a></div>';
                   }
@@ -102,9 +111,11 @@ function landonme(whoops) {
 
     case "tev":
       document.getElementById("tor").style.backgroundColor = "black";
-      document.getElementById("player").style.backgroundColor = "black";
-      document.getElementById("team").style.backgroundColor = "#DDA62A";
+      document.getElementById("team").style.backgroundColor = "black";
+      document.getElementById("player").style.backgroundColor = "#DDA62A";
       document.getElementById("main").innerHTML = 'Hi'
+      console.log('hi');
+      break;
 
     default:
   }
