@@ -52,6 +52,9 @@ $state = "to";
     </div>
   </div>
 </div>
+  <div class="dropdown">
+    <a id="back" href="landing.php">Back</a>
+  </div>
 </body>
 
 </html>
