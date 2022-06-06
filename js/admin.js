@@ -4,9 +4,10 @@ function element(id){
 
 function  makeTeam(){
     const team = ["team_id", "total_earnings", "name", "tournament", "manager_id", "ranking" ,"location"];
+    const head = ["Team Id", "Total earnings", "Name", "Tournament", "Manager id", "Ranking", "Location"];
     string = '<div id="login"> <h1>Create Team</h1>'
     for(let i = 0; i < team.length; i++){
-        string += ' <div id="signup_box"> <div class="field"> <label for="name">' + team[i] + '</label> <input type="text" name="name" id="' + team[i] + '" placeholder="Enter your name"/> <small></small> </div>';      
+        string += ' <div id="signup_box"> <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + team[i] + '" placeholder="Enter your name"/> <small></small> </div>';      
     }
     string += '<div class="field"> <input type="submit" value="Register" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/> </div>';
     
