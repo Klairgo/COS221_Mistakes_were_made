@@ -15,9 +15,10 @@ body {
     height: auto;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
     
  }
+ 
  .hero::before {
     content: "";
     position: absolute;
@@ -40,6 +41,9 @@ body {
     color: white;
     text-align: center;
     margin: 0.625rem;
+ 
+   
+ 
  }
  .hero-title {
     font-size: 3rem;
