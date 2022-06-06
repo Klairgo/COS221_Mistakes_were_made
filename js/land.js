@@ -1,4 +1,4 @@
-function landonme(whoops) {
+function landonme(whoops, gtag) {
   switch (whoops) {
     case "to":
       document.getElementById("tor").style.backgroundColor = "#DDA62A";
@@ -58,6 +58,15 @@ function landonme(whoops) {
           function(data){
               if(data.success){
                 //handle data.message
+                string = ' <div class="fex-v"><a class="flex-t" ><div id="tname">Gamer Tag</div><div id="trank">World Rank</div></a></div>';
+
+                for(i = 0; i < data.message.length; i++){
+                  //chech to see if tournament name changed
+                  string += '<div class="fex-v" ><a class="flex-t" onclick="landonme(`tev`,"'+data.message[i].gamer_tag+')" ><div id="tname" style="font-family: Arial;">'+ 
+                            data.message[i].gamer_tag + '</div><div id="trank" style="font-family: Arial;">'+ 
+                            data.message[i].world_ranking + '</div></a></div>';
+                }
+                document.getElementById("main").innerHTML = string;
               }
               else{
                 //show error
@@ -83,7 +92,7 @@ function landonme(whoops) {
 
                   for(i = 0; i < data.message.length; i++){
                     //chech to see if tournament name changed
-                    string += '<div class="fex-v"><a class="flex-t" ><div id="tname" style="font-family: Arial;">'+ 
+                    string += '<div class="fex-v" ><a class="flex-t"  ><div id="tname"  style="font-family: Arial;">'+ 
                               data.message[i].name + '</div><div id="trank" style="font-family: Arial;">'+ 
                               data.message[i].ranking + '</div></a></div>';
                   }
@@ -102,9 +111,93 @@ function landonme(whoops) {
 
     case "tev":
       document.getElementById("tor").style.backgroundColor = "black";
-      document.getElementById("player").style.backgroundColor = "black";
-      document.getElementById("team").style.backgroundColor = "#DDA62A";
-      document.getElementById("main").innerHTML = 'Hi'
+      document.getElementById("team").style.backgroundColor = "black";
+      document.getElementById("player").style.backgroundColor = "#DDA62A";
+      ajax(
+        {
+            "action": "get_player_stats",
+        },
+        function(data){
+            if(data.success){
+
+                for(i = 0; i < data.message.length; i++){
+                  //chech to see if tournament name changed
+                  string += '<div class="flex-z">'+
+                  '<div class="flex-1" id="gtag">'+
+                  data.message[i].gamer_tag+
+                  '</div>'+
+  
+                  '<div class="flex-2" id="rest">'+
+                      '<div class="flex-1" id="image">'+
+                          'Image'+
+                      '</div>'+
+  
+                      '<div class="flex-2" id="restin">'+
+                         ' <div class="flex-1" id="restin1">'+
+                              'Player Name: '+data.message[i].name+
+                          '</div>'+
+                         ' <div class="flex-1" id="restin1">'+
+                              'Team name: '+data.message[i].team_name
+                          '</div>'+
+                          '<div class="flex-1" id="restin1">'+
+                              'Country: '+data.message[i].country+
+                          '</div>'+
+  
+  
+                      '</div>'+
+                  '</div>' +
+                  '<div class="flex-2" id="rest">' +
+                      '<div class="flex-2" id="restin">'+
+                         ' <div class="flex-1" id="restin1">'+
+                              'World Ranking: ' +data.message[i].world_ranking+
+                          '</div>'+
+                         ' <div class="flex-1" id="restin1">'+
+                              'GAMES WON: ' +data.message[i].games_won+
+                          '</div>'+
+  
+                          '<div class="flex-1" id="restin1">' +
+                             ' Deaths: '+data.message[i].deaths+
+                          '</div>' +
+                          '<div class="flex-1" id="restin1">' +
+                             'Assists: '+data.message[i].assists+
+                          '</div>'+
+                          '<div class="flex-1" id="restin1">'+
+                              'Games Played: ' +data.message[i].games_played+
+                         ' </div>'+
+  
+  
+                      '</div>'+
+  
+                      '<div class="flex-2" id="restin">'+
+                          '<div class="flex-1" id="restin1">'+
+                              'Utility Damage: '+data.message[i].damage+
+                          '</div>'+
+  
+                          '<div class="flex-1" id="restin1">' +
+                              'ADR: '+data.message[i].adr+
+                          '</div>'+
+                         ' <div class="flex-1" id="restin1">'+
+                              'Damage Done: ' +data.message[i].damage_done+
+                          '</div>'+
+                          '<div class="flex-1" id="restin1">'+
+                              'Accuracy: '+data.message[i].accuracy+
+                          '</div>'+
+                         ' <div class="flex-1" id="restin1">'+
+                             ' Entry Success:'+
+                          '</div>'+
+                      '</div>'+
+                  '</div>'+
+              '</div>';
+                }
+                document.getElementById("main").innerHTML = string;
+            }
+            else{
+              //show error
+            }
+        }
+        
+      );
+      break;
 
     default:
   }
