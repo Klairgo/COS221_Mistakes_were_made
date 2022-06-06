@@ -170,7 +170,7 @@ function landonme(whoops, gtag) {
   
                       '<div class="flex-2" id="restin">'+
                           '<div class="flex-1" id="restin1">'+
-                              'Utility Damage: '+data.message[i].damage+
+                              'Utility Damage: '+data.message[i].utility_damage+
                           '</div>'+
   
                           '<div class="flex-1" id="restin1">' +
@@ -183,7 +183,7 @@ function landonme(whoops, gtag) {
                               'Accuracy: '+data.message[i].accuracy+
                           '</div>'+
                          ' <div class="flex-1" id="restin1">'+
-                             ' Entry Success:'+
+                             ' Entry Success:'+data.message[i].entry_success+
                           '</div>'+
                       '</div>'+
                   '</div>'+
