@@ -99,3 +99,10 @@
   #trank{
     align-self: right;
   }
+
+  #goBack{
+    border-color: black;
+    background-color: white;
+    size: 100px;
+    color: black;
+  }

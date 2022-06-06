@@ -14,6 +14,7 @@ $state ="to";
 </meta>
 <link rel="stylesheet" href="../css/nav.css">
 <script src="../js/land.js"></script>
+<script src ="../js/logout.js"></script>
 </head>
   <body>
   <!--nav bar-->
@@ -21,13 +22,13 @@ $state ="to";
     <a id="tor"  onclick = "landonme('to')">Tournament </a>
     <a id="player"  onclick ="landonme('p')">Players</a>  
     <a id="team"  onclick ="landonme('te')">Team</a>      
-    <a id="logout" href="../index.php" onclick = "removeStorage()" onclick="history.back()">Logout</a>
-    <a id = "admin" href="admin.php">Admin</a>
+    <a id="logout" href="../index.php" onclick ="removeStorage()">Logout</a>
+    <a id ="admin" href="admin.php">Admin</a>
   </div>
 </body>
 
 
-<script href = "../logout.js"></script>
+
 </html>
 
 
