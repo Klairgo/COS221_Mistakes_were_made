@@ -262,7 +262,7 @@ class database {
     
     private function get_player(){
         global $conn;
-        $stmt = "SELECT * from player";
+        $stmt = "SELECT gamer_tag, world_ranking from (player AS P INNER JOIN player_statistics AS S ON P.player_id = S.player_id) ORDER BY world_ranking";
         $result = $conn->query($stmt);
         $arr = [];
         while($row = $result->fetch_assoc()){
@@ -270,6 +270,7 @@ class database {
         }
         return $arr;
     }
+
     
     private function create_venue($data){
         if(!isset($data["venue_name"]) || !isset($data["venue_location"]) || !isset($data["venue_email"]) || !isset($data["venue_cell_number"])){
@@ -494,7 +495,7 @@ class database {
 
     private function get_player_stats(){
         global $conn;
-        $stmt = "SELECT * FROM player_statistics";
+        $stmt = "SELECT * from player AS P INNER JOIN player_statistics AS S ON P.player_id = S.player_id";
         $result = $conn->query($stmt); 
         $arr = [];
         while($row = $result->fetch_assoc()){

@@ -23,7 +23,7 @@ echo '<!DOCTYPE html>
      <section class="hero">
 
           <div class="hero-content" id="main">
-              <p id="123"> WELCOME PLEASE CHOOSE WHAT YOU WANT TO SEE:</p>
+              <p id="do"> Welcome  Please  Choose  What  You  Want  TO  See:</p>
               
           </div>
 

@@ -16,12 +16,12 @@ function landonme(whoops) {
                   //create first tournament name
                   t_name = data.message[0].tournament_name;
                   //create first heading
-                  string  =  "<div><h1 style='font-size: 30px;'>" + t_name + "</h1></div>" + "<div><h1>" + date + "</h1></div>";
+                  string  =  "<div id='GO'><h1 style='font-size: 30px;'>" + t_name + "</h1></div>" + "<div><h1>" + date + "</h1></div>";
                   for(i = 0; i < data.message.length; i++){
                     //chech to see if tournament name changed
                     if(data.message[i].tournament_name != t_name){
                       t_name = data.message[i].tournament_name;
-                      string += "<div><h1>" + t_name + "</h1></div>";
+                      string += "<div id='GO'><h1 style='font-size: 30px;'>" + t_name + "</h1></div>";
                     }
                     //check to see if date change
                     else if(data.message[i].data_time.substring(0, 10) != date){
@@ -79,11 +79,11 @@ function landonme(whoops) {
           },
           function(data){
               if(data.success){
-                string = ' <div class="fex-v"><a class="flex-t" onclick ="landonme("tev")"><div id="tname">Team Name</div><div id="trank">Rank</div></a></div>';
+                string = ' <div class="fex-v"><a class="flex-t" ><div id="tname">Team Name</div><div id="trank">Rank</div></a></div>';
 
                   for(i = 0; i < data.message.length; i++){
                     //chech to see if tournament name changed
-                    string += '<div class="fex-v"><a class="flex-t" onclick ="landonme("tev")"><div id="tname" style="font-family: Arial;">'+ 
+                    string += '<div class="fex-v"><a class="flex-t" ><div id="tname" style="font-family: Arial;">'+ 
                               data.message[i].name + '</div><div id="trank" style="font-family: Arial;">'+ 
                               data.message[i].ranking + '</div></a></div>';
                   }
