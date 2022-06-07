@@ -1,6 +1,4 @@
-<?php
-$state ="to";
-?>
+
 <!DOCTYPE html>
 
 <html>
