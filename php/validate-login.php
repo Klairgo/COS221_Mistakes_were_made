@@ -13,7 +13,7 @@ function val($email, $pass)
 {
     global $conn;
     $admin = false;
-    $checkUser = "Select * from users where email='$email'";
+    $checkUser = "Select * from users where user_email='$email'";
     $result = mysqli_query($conn, $checkUser);
     $checkIn = mysqli_num_rows($result);
     setcookie("admin" , "false");
