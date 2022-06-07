@@ -1,8 +1,8 @@
 <?php
 
 
-if(isset($_COOKIE["logged_in"])){
-echo (file_get_contents("header.php"));
+if(isset($_COOKIE["logged_in"]) && isset($_COOKIE["admin"])){
+echo (file_get_contents("adminHeader.php"));
 echo '<!DOCTYPE html>
 
 <html>
@@ -35,6 +35,39 @@ echo '<!DOCTYPE html>
 </html>';
 }
 
+else if (isset($_COOKIE["logged_in"]) && isset($_COOKIE["admin"]) == false){
+     echo (file_get_contents("header.php"));
+echo '<!DOCTYPE html>
+
+<html>
+
+<head>
+     <meta>
+     <title>Landing</title>
+     <meta charset="UTF-8" />
+     <meta name="author" content="Mistakes_were_made" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     </meta>
+     <link rel="stylesheet" href="../css/hero.css">
+     <link rel="stylesheet" href="../css/layout.css">
+     
+</head>
+
+<body>
+     <section class="hero">
+
+          <div class="hero-content" id="main">
+              <p id="do"> Welcome  Please  Choose  What  You  Want  TO  SeE:</p>
+              
+          </div>
+
+     </section>
+
+
+</body>
+
+</html>';
+}
 else{
 echo '<!DOCTYPE html>
 
