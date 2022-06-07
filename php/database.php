@@ -250,7 +250,7 @@ class database {
         }
         global $conn;
         $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country) VALUES (?, ?, ?, ?,?)");
-        $stmt->bind_param("ssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"], $data["player_img"]); 
+        $stmt->bind_param("sssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"], $data["player_img"]); 
         $stmt->execute();
         if($stmt->error){
             return $stmt->error;
@@ -262,7 +262,7 @@ class database {
     
     private function get_player(){
         global $conn;
-        $stmt = "SELECT gamer_tag, world_ranking from (player AS P INNER JOIN player_statistics AS S ON P.player_id = S.player_id) ORDER BY world_ranking";
+        $stmt = "SELECT gamer_tag, world_ranking, player_img from (player AS P INNER JOIN player_statistics AS S ON P.player_id = S.player_id) ORDER BY world_ranking";
         $result = $conn->query($stmt);
         $arr = [];
         while($row = $result->fetch_assoc()){
