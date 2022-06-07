@@ -147,7 +147,7 @@ function landonme(whoops, gtag) {
                 data.message[0].accuracy +
                 "</div>" +
                 ' <div class="flex-1" id="restin1">' +
-                " Entry Success:" +
+                " Entry Success: " +
                 data.message[0].entry_success +
                 "</div>" +
                 "</div>" +
