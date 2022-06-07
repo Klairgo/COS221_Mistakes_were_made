@@ -167,6 +167,7 @@
      
       width:25%; 
       height:50%;
+      border-right: none;
     }
     #rest{
       flex-direction: row;
