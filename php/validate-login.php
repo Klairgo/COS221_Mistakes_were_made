@@ -29,8 +29,6 @@ function val($email, $pass)
         $passPrepare->execute();
         $resultPass = $passPrepare->get_result();
         $finalPass = $resultPass->fetch_assoc();
-        console_log($finalPass["user_password"]);
-        console_log($hashPass);
         if ($hashPass ==  $finalPass["user_password"] && $admin == true) {
             setcookie("logged_in" , "true");
             setCookie("admin" , "true");

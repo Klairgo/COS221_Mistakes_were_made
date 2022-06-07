@@ -66,7 +66,7 @@ function login(){
             },
             function(data){
                 if(data.success){
-                    window.location.href="../php/landing";
+                    window.location.href="../php/landing.php";
                 }
                 else{
                    showError(email, data.message) ;
