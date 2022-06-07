@@ -77,6 +77,7 @@ function landonme(whoops, gtag) {
       ajax(
         {
           action: "get_player_stats",
+          gamer_tag: "broky"
         },
         function (data) {
           if (data.success) {
