@@ -196,7 +196,7 @@ function landonme(whoops, gtag) {
                   "</h1></div>";
               }
               //check to see if date change
-              else if (data.message[i].data_time.substring(0, 10) != date) {
+              if (data.message[i].data_time.substring(0, 10) != date) {
                 date = data.message[i].data_time.substring(0, 10);
                 string += "<div><h1>" + date + "</h1></div>";
               }
