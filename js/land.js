@@ -98,7 +98,7 @@ function landonme(whoops, gtag) {
                 "</div>" +
                 ' <div class="flex-1" id="restin1">' +
                 "Team name: " +
-                data.message[0].team_name +
+                data.message[0].team_name+
               "</div>" +
                 '<div class="flex-1" id="restin1">' +
                 "Country: " +
