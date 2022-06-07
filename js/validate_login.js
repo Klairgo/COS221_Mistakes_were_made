@@ -76,15 +76,6 @@ function login(){
     }
 }
 
-function isValid(){
-    let valid = getCookie(Admin);
-    if (valid == "true"){
-        document.getElementById().style.visibility = 'visible';
-    }
-    else{
-        document.getElementById().style.visiblity = 'hidden';
-    }
-}
 
 const isEmpty = input => input === "" ? true : false;
 
@@ -163,12 +154,3 @@ const val_password = (vpassword) => {
     return valid;
 }
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-}
-
-/*function setStorage(){
-    localStorage.setItem("LoggedIn", 1);  // still not really sure
-}*/
