@@ -1,9 +1,8 @@
 <?php
 include_once("headerForAdmin.php");
-// echo (file_get_contents("header.php"));
-?>
 
-<!DOCTYPE html>
+echo 
+'<!DOCTYPE html>
 
 <html>
 
@@ -38,4 +37,6 @@ include_once("headerForAdmin.php");
 
 </body>
 
-</html>
+</html>';
+
+?>
