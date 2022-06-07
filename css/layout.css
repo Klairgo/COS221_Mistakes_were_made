@@ -115,8 +115,10 @@
     border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
     width :75vw;
     height: 75vh;
-    font-family: "anu", sans-serif;
+    font-family: "ariel";
     font-size: xx-large;
+    justify-content: center;
+    
     
     
   }
@@ -139,6 +141,7 @@
     background-color: rgb(41, 50, 65);
     border-style: solid; 
      border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+     align-self: center;
   }
   .flex-2 {
   
@@ -156,7 +159,7 @@
     flex-direction: column;
     justify-content: center;
     
-    width: 100%; 
+    width: 50%; 
    
   }
   #image
