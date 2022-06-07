@@ -1,7 +1,5 @@
 <?php
-$state = "to";
-?>
-<!DOCTYPE html>
+echo '<!DOCTYPE html>
 
 <html>
 
@@ -56,4 +54,5 @@ $state = "to";
     
 </body>
 
-</html>
+</html>';
+?>

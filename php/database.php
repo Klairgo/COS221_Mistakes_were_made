@@ -498,7 +498,7 @@ class database {
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("SELECT gamer_tag, P.name, T.name AS team_name, country, world_ranking, games_won, deaths, assists, games_played, utility_damage, adr, damage_done, accuracy, entry_success FROM (player_statistics AS S INNER JOIN(player AS P INNER JOIN teams AS T ON P.team_id = T.team_id) ON P.player_id = S.player_id) WHERE P.gamer_tag = ?SELECT * FROM (player AS P INNER JOIN player_statistics AS S ON P.player_id = S.player_id) WHERE P.gamer_tag = ?");
+        $stmt = $conn->prepare("SELECT gamer_tag, P.name, T.name AS team_name, country, world_ranking, games_won, deaths, assists, games_played, utility_damage, adr, damage_done, accuracy, entry_success FROM (player_statistics AS S INNER JOIN(player AS P INNER JOIN teams AS T ON P.team_id = T.team_id) ON P.player_id = S.player_id) WHERE P.gamer_tag = ?");
         $stmt->bind_param("s", $data["gamer_tag"]);
         $stmt->execute();
         $result = $stmt->get_result();
