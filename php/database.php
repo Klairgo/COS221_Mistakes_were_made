@@ -324,12 +324,12 @@ class database {
     }
     
     private function create_match($data){
-        if(!isset($data["data_time"]) || !isset($data["map_id"]) || !isset($data["team1_id"]) || !isset($data["team2_id"]) || !isset($data["tournament_id"])){
+        if(!isset($data["map_id"]) || !isset($data["team1_id"]) || !isset($data["team2_id"]) || !isset($data["tournament_id"])){
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("INSERT INTO matches (data_time, map_id, tournament_id, team1_id, team2_id) VALUES (?,?,?,?,?)");
-        $stmt->bind_param("sssss",$data["data_time"], $data["map_id"], $data["tournament_id"], $data["team1_id"], $data["team2_id"]);
+        $stmt = $conn->prepare("INSERT INTO matches (map_id, tournament_id, team1_id, team2_id) VALUES (?,?,?,?,)");
+        $stmt->bind_param("ssss", $data["map_id"], $data["tournament_id"], $data["team1_id"], $data["team2_id"]);
         $stmt->execute();
         if($stmt->error){
             return $stmt->error;

@@ -22,7 +22,10 @@ function  makeTeam(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
-        if((Number.isInteger(element(arr[0]).value)) == true && check_name(element(arr[1]).value) == false && Number.isInteger(element(arr[3]).value) == true && Number.isInteger(element(arr[4]).value) == true){
+        val1 = element(arr[0]).value;
+        val2 = element(arr[3]).value;
+        val3 = element(arr[4]).value;
+        if(Number.isInteger(+val1) == true && check_name(element(arr[1]).value) == false && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true){
         const info = {
             "action" : "create_team" ,
             "total_earnings" : element(arr[0]).value,
@@ -68,7 +71,10 @@ function makeTournament(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
-        if(Number.isInteger(element(arr[0]).value) == true && Number.isInteger(element(arr[1]).value) == true && Number.isInteger(element(arr[2]).value) == true && check_name(element(arr[3].value)) == false){
+        val1 = (element(arr[0]).value);
+        val2 = (element(arr[1]).value);
+        val3 = (element(arr[2]).value);
+        if(Number.isInteger(+val1) == true && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true && check_name(element(arr[3].value)) == false){
         const info = {
             "action" : "create_tournament" ,
             "first_place_id" : element(arr[0]).value,
@@ -109,7 +115,9 @@ function makePlayer(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
-        if(check_name(element(arr[0]).value) == false && Number.isInteger(element(arr[1]).value) == true && Number.isInteger(element(arr[2]).value) == true && check_name(element(arr[3]).value) == false){
+        val1 = element(arr[1]).value;
+        val2 = element(arr[2]).value;
+        if(check_name(element(arr[0]).value) == false && Number.isInteger(+val1) == true && Number.isInteger(+val2) == true && check_name(element(arr[3]).value) == false){
         const info = {
             "action" : "create_player" ,
             "name" : element(arr[0]).value,
@@ -149,7 +157,8 @@ function makeVenue(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
-        if(check_name(element(arr[0]).value) == false && check_email(element(arr[2]).value) == true && Number.isInteger(element(arr[3]).value) == true){
+        val = element(arr[3]).value;
+        if(check_name(element(arr[0]).value) == false && check_email(element(arr[2]).value) == true && Number.isInteger(+val) == true){
         const info = {
             "action" : "create_venue" ,
             "venue_name" : element(arr[0]).value,
@@ -188,7 +197,11 @@ function makeMatch(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
-        if(Number.isInteger(element(arr[0]).value) == true && Number.isInteger(element(arr[1]).value) == true && Number.isInteger(element(arr[2]).value) == true && Number.isInteger(element(arr[3]).value) == true){
+        val1 = (element(arr[0]).value);
+        val2 = (element(arr[1]).value);
+        val3 = (element(arr[2]).value);
+        val4 = (element(arr[3]).value);
+        if(Number.isInteger(+val1) == true && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true && Number.isInteger(+val4) == true){
         const info = {
             "action" : "create_match" ,
             "map_id" : element(arr[0]).value,
