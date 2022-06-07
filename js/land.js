@@ -12,6 +12,7 @@ function landonme(whoops, gtag) {
         },
         function (data) {
           if (data.success) {
+            console.log('shit');
             //handle data.message
             string =
               ' <div class="fex-v"><a class="flex-t" ><div id="tname">Gamer Tag</div><div id="trank">World Rank</div></a></div>';
@@ -28,6 +29,7 @@ function landonme(whoops, gtag) {
                 "</div></a></div>";
             }
             document.getElementById("main").innerHTML = string;
+            console.log('shit');
           } else {
             //show error
           }
