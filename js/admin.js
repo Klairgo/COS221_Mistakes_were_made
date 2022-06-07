@@ -30,7 +30,7 @@ function  makeTeam(){
         const info = {
             "action" : "create_team" ,
             "total_earnings" : element(arr[0]).value,
-            "name" : element(arr[1]).value,
+            "team_name" : element(arr[1]).value,
             "tour_wins" : element(arr[2]).value,
             "manager_id" : element(arr[3]).value,
             "ranking" : element(arr[4]).value,
@@ -65,8 +65,8 @@ function  makeTeam(){
 function makeTournament(){
     show("login");
     hide("mess");
-    arr = ["first_place_id", "second_place_id", "third_place_id", "name"];
-    head = ["First place id", "Second place id", "Third place id", "Name"];
+    arr = ["venue_id", "first_place_id", "second_place_id", "third_place_id", "name"];
+    head = ["Venue Id", "First place id", "Second place id", "Third place id", "Name"];
     string = '<h1>Create Tournament</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -80,10 +80,11 @@ function makeTournament(){
         if(Number.isInteger(+val1) == true && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true && check_name(element(arr[3].value)) == false){
         const info = {
             "action" : "create_tournament" ,
-            "first_place_id" : element(arr[0]).value,
-            "second_place_id" : element(arr[1]).value,
-            "third_place_id" : element(arr[2]).value,
-            "name" : element(arr[3]).value,
+            "venue_id": element(arr[0]).value,
+            "first_place_id" : element(arr[1]).value,
+            "second_place_id" : element(arr[2]).value,
+            "third_place_id" : element(arr[3]).value,
+            "name" : element(arr[4]).value,
         }
         ajax(info, function(data){
             if(data.success){
@@ -121,12 +122,12 @@ function makePlayer(){
     document.getElementById("button").addEventListener("click", function() {
         val1 = element(arr[1]).value;
         val2 = element(arr[2]).value;
-        if(check_name(element(arr[0]).value) == false && Number.isInteger(+val1) == true && Number.isInteger(+val2) == true && check_name(element(arr[3]).value) == false){
+        if(check_name(element(arr[0]).value) == false && Number.isInteger(+val1) == true && check_name(element(arr[3]).value) == false){
         const info = {
             "action" : "create_player" ,
             "name" : element(arr[0]).value,
             "team_id" : element(arr[1]).value,
-            "gamertag" : element(arr[2]).value,
+            "gamer_tag" : element(arr[2]).value,
             "country" : element(arr[3]).value,
             "player_img" : element(arr[4].value),
         }
@@ -148,7 +149,6 @@ function makePlayer(){
       else if(check_name(element(arr[0]).value) == true){alert("Your name is incorrect!");} 
       else if(Number.isInteger(+val1) == false){alert("Your team ID is incorrect!");}
       else if(check_name(element(arr[3]).value) == true){alert("Your country is incorrect!");} 
-      else if(Number.isInteger(+val2) == false){alert("Your gamerTag is incorrect!");} 
     });
 }
 
@@ -197,8 +197,8 @@ function makeVenue(){
 function makeMatch(){
     show("login");
     hide("mess");
-    arr = ["map_id", "team1_id", "team2_id", "tournament_id"];
-    head = ["Map id", "Team1 id", "Team2 id", "Tournament id"];
+    arr = ["map_id", "team1_id", "team2_id", "tournament_id", "time"];
+    head = ["Map id", "Team1 id", "Team2 id", "Tournament id", "Time (yyyy-mm-dd hh:mm:ss)"];
     string = '<h1>Create Match</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -210,13 +210,15 @@ function makeMatch(){
         val2 = (element(arr[1]).value);
         val3 = (element(arr[2]).value);
         val4 = (element(arr[3]).value);
-        if(Number.isInteger(+val1) == true && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true && Number.isInteger(+val4) == true){
+        val5 = (element(arr[4]).value);
+        if(Number.isInteger(+val1) == true && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true && Number.isInteger(+val4) == true && check_date_time(val5) == true){
         const info = {
             "action" : "create_match" ,
             "map_id" : element(arr[0]).value,
             "team1_id" : element(arr[1]).value,
             "team2_id" : element(arr[2]).value,
-            "tournament_id" : element(arr[3]).value
+            "tournament_id" : element(arr[3]).value,
+            "time": element(arr[4]).value
         }
         ajax(info, function(data){
             if(data.success){
@@ -237,6 +239,7 @@ function makeMatch(){
       else if(Number.isInteger(+val2) == false){alert("Your team1 ID is incorrect!");}
       else if(Number.isInteger(+val3) == false){alert("Your team2 ID is incorrect!");}
       else if(Number.isInteger(+val4) == false){alert("Your tournament ID is incorrect!");}
+      else if(check_date_time(+val5) == false){alert("Use correct format for data-time!");}
     });
 }
 
@@ -281,7 +284,7 @@ function updateAccount(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "account_email"];
-    head = ["Change Value", "New Value", "Account Email"];
+    head = ["Change Attribute", "New Value", "Account Email"];
     string = '<h1>Update Account</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -317,7 +320,7 @@ function updateManager(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "manager_email"];
-    head = ["Change Value", "New Value", "Manager Email"];
+    head = ["Change Attribute", "New Value", "Manager Email"];
     string = '<h1>Update Manager</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -352,7 +355,7 @@ function updateTeams(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "team_id"];
-    head = ["Change Value", "New Value", "Team Id"];
+    head = ["Change Attribute", "New Value", "Team Id"];
     string = '<h1>Update Teams</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -387,7 +390,7 @@ function updateVenue(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "venue_id"];
-    head = ["Change Value", "New Value", "Venue Id"];
+    head = ["Change Attribute", "New Value", "Venue Id"];
     string = '<h1>Update Venue</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -422,7 +425,7 @@ function updateMatch(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "match_id"];
-    head = ["Change Value", "New Value", "Match Id"];
+    head = ["Change Attribute", "New Value", "Match Id"];
     string = '<h1>Update Match</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -457,8 +460,8 @@ function updateMatchStats(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "match_id"];
-    head = ["Change Value", "New Value", "Match Id"];
-    string = '<h1>Update Match</h1> <div id="signup_box"> ';
+    head = ["Change Attribute", "New Value", "Match Id"];
+    string = '<h1>Update Match Statistics</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
     }
@@ -469,7 +472,7 @@ function updateMatchStats(){
             "action" : "update_match_stats" ,
             "change_value" : element(arr[0]).value,
             "new_value" : element(arr[1]).value,
-            "match_id" : element(arr[2]).value,
+            "match_id" : element(arr[2]).value
         }
         ajax(info, function(data){
             if(data.success){
@@ -492,8 +495,8 @@ function updatePlayerStats(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "player_id"];
-    head = ["Change Value", "New Value", "Player Id"];
-    string = '<h1>Update Match</h1> <div id="signup_box"> ';
+    head = ["Change Attribute", "New Value", "Player Id"];
+    string = '<h1>Update Player Statistics</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
     }
@@ -504,7 +507,7 @@ function updatePlayerStats(){
             "action" : "update_player_stats" ,
             "change_value" : element(arr[0]).value,
             "new_value" : element(arr[1]).value,
-            "match_id" : element(arr[2]).value,
+            "player_id" : element(arr[2]).value,
         }
         ajax(info, function(data){
             if(data.success){
@@ -527,7 +530,7 @@ function updateSponsoredBy(){
     show("login");
     hide("mess");
     arr = ["change_value", "new_value", "sponsor_id"];
-    head = ["Change Value", "New Value", "Sponsor Id"];
+    head = ["Change Attribute", "New Value", "Sponsor Id"];
     string = '<h1>Update Sponsored By</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -650,4 +653,10 @@ const check_name = (name) => {
 const check_email = (email) => {
     const reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/; 
     return reg.test(email);
+};
+
+
+const check_date_time = (time) => {
+    var reg=/^([0-9]{4}-[0-9]{2}-[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2})$/;
+    return reg.test(time);
 };

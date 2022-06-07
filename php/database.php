@@ -245,11 +245,11 @@ class database {
     }
     
     private function create_player($data){
-        if(!isset($data["name"]) || !isset($data["team_id"]) || !isset($data["gamer_tag"]) || !isset($data["country"])){
+        if(!isset($data["name"]) || !isset($data["team_id"]) || !isset($data["gamer_tag"]) || !isset($data["country"]) || !isset($data["player_img"])){
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country) VALUES (?, ?, ?, ?,?)");
+        $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"], $data["player_img"]); 
         $stmt->execute();
         if($stmt->error){
@@ -324,12 +324,12 @@ class database {
     }
     
     private function create_match($data){
-        if(!isset($data["map_id"]) || !isset($data["team1_id"]) || !isset($data["team2_id"]) || !isset($data["tournament_id"])){
+        if(!isset($data["map_id"]) || !isset($data["team1_id"]) || !isset($data["team2_id"]) || !isset($data["tournament_id"]) || !isset($data["time"])){
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("INSERT INTO matches (map_id, tournament_id, team1_id, team2_id) VALUES (?,?,?,?,)");
-        $stmt->bind_param("ssss", $data["map_id"], $data["tournament_id"], $data["team1_id"], $data["team2_id"]);
+        $stmt = $conn->prepare("INSERT INTO matches (map_id, tournament_id, team1_id, team2_id, data_time) VALUES (?,?,?,?,?)");
+        $stmt->bind_param("sssss", $data["map_id"], $data["tournament_id"], $data["team1_id"], $data["team2_id"], $data["time"]);
         $stmt->execute();
         if($stmt->error){
             return $stmt->error;
@@ -367,7 +367,7 @@ class database {
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("UPDATE accounts SET ". $data["change_value"]. " = ? WHERE email = ?");
+        $stmt = $conn->prepare("UPDATE users SET ". $data["change_value"]. " = ? WHERE user_email = ?");
         if($stmt == false){
             return "Change attribute does not exist";
         }
@@ -521,7 +521,7 @@ class database {
     } 
 
     private function update_match_stats($data){
-        if(!isset($data["change_value"]) || !isset($data["new_value"]) || !isset($data["match_id "])){
+        if(!isset($data["change_value"]) || !isset($data["new_value"]) || !isset($data["match_id"])){
             return "Not all attributes were given";
         }
         global $conn;
@@ -529,7 +529,7 @@ class database {
         if($stmt == false){
             return "Change attribute does not exist";
         }
-        $stmt->bind_param("ss",$data["new_value"], $data["match_id "]);
+        $stmt->bind_param("ss",$data["new_value"], $data["match_id"]);
         $stmt->execute();
         if($stmt->error){
             return $stmt->error;
