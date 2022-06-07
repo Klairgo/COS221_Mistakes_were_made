@@ -539,7 +539,7 @@ function updateSponsoredBy(){
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
         const info = {
-            "action" : "update_sponsered_by" ,
+            "action" : "update_sponsored_by" ,
             "change_value" : element(arr[0]).value,
             "new_value" : element(arr[1]).value,
             "sponsor_id" : element(arr[2]).value,

@@ -173,7 +173,7 @@ class database {
                 }
             }
             else if($param_data["action"] == "update_sponsored_by"){
-                $status = $this->update_sponsered_by($param_data);
+                $status = $this->update_sponsored_by($param_data);
                 if($status == "true"){
                     return $this->response(true, "Sponsor updated");
                 }
@@ -448,7 +448,7 @@ class database {
         return true;
     }
 
-    private function update_sponsered_by($data){
+    private function update_sponsored_by($data){
         if(!isset($data["change_value"]) || !isset($data["new_value"]) || !isset($data["sponsor_id"])){
             return "Not all attributes were given";
         }
@@ -542,7 +542,7 @@ class database {
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("UPDATE player_statistics SET ". $data["change_value"]. " = ? WHERE palyer_id = ?");
+        $stmt = $conn->prepare("UPDATE player_statistics SET ". $data["change_value"]. " = ? WHERE player_id = ?");
         if($stmt == false){
             return "Change attribute does not exist";
         }
