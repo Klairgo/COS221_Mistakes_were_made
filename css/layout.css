@@ -159,6 +159,10 @@
     /* align-self: left; */
     /* border: none; */
     width: 50%; 
+    border-left: none;
+      border-right: none;
+      align-self: left;
+      font-size: x-large;
    
   }
   #image
