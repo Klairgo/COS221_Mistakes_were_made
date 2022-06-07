@@ -38,7 +38,7 @@ function validate($fname, $lname, $email, $password, $conf_password){
         $role = "admin";
     } 
     else{
-        $role = null;
+        $role = "normal";
     }
 
     if($conn->connect_error){
