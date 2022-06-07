@@ -1,5 +1,5 @@
 function removeStorage() {
-    document.cookie = "logged_in=;expires=Thu, 01 Jan 1970 00:00:01 UTC; path=/";
+    document.cookie = "logged_in = false";
     if(getCookie("admin") != null){
         document.cookie = "admin=;expires=Thu, 01 Jan 1970 00:00:01 UTC; path=/";
     }
@@ -17,15 +17,11 @@ function getCookie(cName) {
     return res
   }
 
-  window.addEventListener( "pageshow", function ( event ) { // must just check
-    if(window.event){
-      if(window.event.clientX < 40 && window.event.clientY < 0){
-      document.cookie = "logged_in=;expires=Thu, 01 Jan 1970 00:00:01 UTC; path=/";
-      if(getCookie("admin") != null){
-          document.cookie = "admin=;expires=Thu, 01 Jan 1970 00:00:01 UTC; path=/";
-      }
+  window.addEventListener( "pageshow", function ( event ) {
+    var historyTraversal = event.persisted || 
+                           ( typeof window.performance != "undefined" && 
+                                window.performance.navigation.type === 2 );
+    if ( historyTraversal ) {
       window.location.reload();
     }
-    
-    }
-});
+  });
