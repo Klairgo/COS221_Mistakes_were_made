@@ -40,7 +40,7 @@ function landonme(whoops, gtag) {
       document.getElementById("tor").style.backgroundColor = "black";
       document.getElementById("player").style.backgroundColor = "black";
       document.getElementById("team").style.backgroundColor = "#DDA62A";
-      document.getElementById("main").innerHTML = ajax(
+       ajax(
         {
           action: "get_team",
         },
