@@ -188,7 +188,7 @@ function makeMatch(){
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
-        if(Number.isInteger(element(arr[0]).value) && Number.isInteger(element(arr[1]).value) && Number.isInteger(element(arr[2]).value) && Number.isInteger(element(arr[3]).value)){
+        if(Number.isInteger(element(arr[0]).value) == true && Number.isInteger(element(arr[1]).value) == true && Number.isInteger(element(arr[2]).value) == true && Number.isInteger(element(arr[3]).value) == true){
         const info = {
             "action" : "create_match" ,
             "map_id" : element(arr[0]).value,
