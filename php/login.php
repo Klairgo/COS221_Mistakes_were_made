@@ -11,7 +11,7 @@ function response($success, $message = ""){
      ]);
 }
 
-if(isset($_POST["name"]) &&  isset($_POST["password"])){
+if(isset($_POST["email"]) &&  isset($_POST["password"])){
      
      
      $valid = val($_POST["email"], $_POST["password"]);

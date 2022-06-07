@@ -25,6 +25,7 @@ function ajax(data, callback){
     var req = new XMLHttpRequest();
     req.onreadystatechange = function(){
         if(req.readyState == 4 && req.status == 200){
+            console.log(req.responseText);
             var json = JSON.parse(req.responseText);
             callback(json);
         }
@@ -58,7 +59,6 @@ function login(){
 
 
     if(valid){
-
         ajax(
             {
                 "email": email.value,
