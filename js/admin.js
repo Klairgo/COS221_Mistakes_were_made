@@ -23,9 +23,10 @@ function  makeTeam(){
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
         val1 = element(arr[0]).value;
-        val2 = element(arr[3]).value;
-        val3 = element(arr[4]).value;
-        if(Number.isInteger(+val1) == true && check_name(element(arr[1]).value) == false && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true){
+        val2 = element(arr[2]).value;
+        val3 = element(arr[3]).value;
+        val4 = element(arr[4]).value;
+        if(Number.isInteger(+val1) == true && check_name(element(arr[1]).value) == false && Number.isInteger(+val2) == true && Number.isInteger(+val3) == true && Number.isInteger(+val4) == true){
         const info = {
             "action" : "create_team" ,
             "total_earnings" : element(arr[0]).value,
@@ -50,9 +51,11 @@ function  makeTeam(){
             }
         })
     }
-    else{
-        alert("Your information is incorrect!");
-    }
+    else if(Number.isInteger(+val1) == false){alert("Your total earnings is incorrect!");}
+    else if(check_name(element(arr[1]).value) == true){alert("Your name is incorrect!");} 
+    else if(Number.isInteger(+val2) == false){alert("Your tournament wins is incorrect!");} 
+    else if(Number.isInteger(+val3) == false){alert("Your manager ID is incorrect!");}
+    else if(Number.isInteger(+val4) == false){alert("Your ranking is incorrect!");}
 });
     
 }
@@ -97,10 +100,11 @@ function makeTournament(){
             }
         })
     }
-    else{
-        console.log("reached")
-        alert("Your information is incorrect!");
-    }});
+    else if(Number.isInteger(+val1) == false){alert("Your first place ID is incorrect!");}
+    else if(check_name(element(arr[3]).value) == true){alert("Your name is incorrect!");} 
+    else if(Number.isInteger(+val2) == false){alert("Your second place ID is incorrect!");} 
+    else if(Number.isInteger(+val3) == false){alert("Your thirds place ID is incorrect!");}
+});
 }
 
 function makePlayer(){
@@ -140,9 +144,12 @@ function makePlayer(){
                 show("mess");
             }
         })
-      }else{
-        alert("Your information is incorrect!");
-      }});
+    }
+      else if(check_name(element(arr[0]).value) == true){alert("Your name is incorrect!");} 
+      else if(Number.isInteger(+val1) == false){alert("Your team ID is incorrect!");}
+      else if(check_name(element(arr[3]).value) == true){alert("Your country is incorrect!");} 
+      else if(Number.isInteger(+val2) == false){alert("Your gamerTag is incorrect!");} 
+    });
 }
 
 function makeVenue(){
@@ -180,9 +187,11 @@ function makeVenue(){
                 show("mess");
             }
         })
-      }else{
-        alert("Your information is incorrect!");
-      }});
+      }
+      else if(check_name(element(arr[0]).value) == true){alert("Your name is incorrect!");} 
+      else if(Number.isInteger(+val) == false){alert("Your call number is incorrect!");}
+      else if(check_email(element(arr[2]).value) == false){alert("Your email is incorrect!");} 
+    });
 }
 
 function makeMatch(){
@@ -223,9 +232,12 @@ function makeMatch(){
                 show("mess");
             }
         })
-      }else{
-        alert("Your information is incorrect!");
-      }});
+      }
+      else if(Number.isInteger(+val1) == false){alert("Your map ID is incorrect!");}
+      else if(Number.isInteger(+val2) == false){alert("Your team1 ID is incorrect!");}
+      else if(Number.isInteger(+val3) == false){alert("Your team2 ID is incorrect!");}
+      else if(Number.isInteger(+val4) == false){alert("Your tournament ID is incorrect!");}
+    });
 }
 
 function makeSponsor(){
