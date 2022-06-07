@@ -65,9 +65,7 @@ function signup(){
                 uemail && upassword &&
                 uconf_password;
 
-
     if(valid){
-
         ajax(
             {
                 "fname" : name.value,

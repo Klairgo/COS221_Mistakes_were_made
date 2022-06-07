@@ -11,7 +11,7 @@ function validate_response($success, $message = ""){
 }
 
 
-function validate($role, $fname, $lname, $password, $conf_password, $email){
+function validate($fname, $lname, $email, $password, $conf_password){
     global $conn;
     $name_pat = '/[ `!,.<>@#$%^()_+\-&*=\[\]{};\':\"\\|\/?~]/';
     $pass_pat = "/^(?=\S{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/";
@@ -25,7 +25,7 @@ function validate($role, $fname, $lname, $password, $conf_password, $email){
     if(preg_match($name_pat, $lname)){
         return validate_response(false, "Invalid surname");
     }
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
         return validate_response(false, "Invalid email");
     }
     if(!preg_match($pass_pat, $password)){
@@ -34,7 +34,12 @@ function validate($role, $fname, $lname, $password, $conf_password, $email){
     if($password != $conf_password){
         return validate_response(false, "Passwords does not match");
     }
-
+    if($email == "u21489549@tuks.co.za"){
+        $role = "admin";
+    } 
+    else{
+        $role = null;
+    }
 
     if($conn->connect_error){
         return validate_response(false, "Connection Failure: ".$conn->connect_error);
@@ -45,7 +50,7 @@ function validate($role, $fname, $lname, $password, $conf_password, $email){
         $password_hashed = password_hash($saltPass, PASSWORD_ARGON2ID);
         //$password_hashed = password_hash($new_pass, PASSWORD_DEFAULT);
 
-        $query = "INSERT INTO accounts (role, fname, lname, password, email) VALUES ('$role', '$fname','$lname', '$password_hashed', '$email')";
+        $query = "INSERT INTO users (user_type, user_name, user_surname, user_email, user_password) VALUES ('$role', '$fname','$lname', '$email', '$password_hashed')";
 
 
         if($conn->query($query) === true){
