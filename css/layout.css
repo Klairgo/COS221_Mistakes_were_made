@@ -17,6 +17,7 @@
   .flex-v div {
     font-size: 23px;
   }
+
   .flex-c {
     display: flex;
     flex-direction: column;
@@ -80,6 +81,8 @@
     width :950px;
     
   }
+
+
   .flex-t div {
     padding: 5px;
     justify-content: center;
@@ -92,6 +95,7 @@
   }
   .flex-t div:hover {
     color: rgb(152, 193, 217);
+    cursor: pointer;
   }
   #tname{
     align-self: left;
