@@ -89,7 +89,7 @@ function landonme(whoops, gtag) {
                 "</div>" +
                 '<div class="flex-2" id="rest">' +
                 '<div class="flex-1" id="image" style="text-align:centre">' +
-                '<img height="300" width="300" src="data:image/png;base64,' + data.message[0].player_img + '"/>' +
+                '<img height="200" width="200" src="data:image/png;base64,' + data.message[0].player_img + '"/>' +
                 "</div>" +
                 '<div class="flex-2" id="restin">' +
                 ' <div class="flex-1" id="restin1">' +
