@@ -18,22 +18,25 @@ function val($email, $pass)
     $checkIn = mysqli_num_rows($result);
     setcookie("admin" , "false");
 
-    if($checkUser = 'u21489549@tuks.co.za' || $checkUser = "jake.mileham@gmail.com" || $checkUser = ""){//need to insert emails here
+    if($checkUser = 'u21489549@tuks.co.za' || $checkUser = "jake.mileham@gmail.com"){//need to insert emails here
         $admin = true;
     }
     if ($checkIn != 0) {
         $salt = $email;
-        $saltedPass = $salt . $pass .$salt;
-        $hashPass = hash('sha256',$saltedPass);
-        $pass = "Select password from users where email='$email";
-        $resultPass = mysqli_query($conn, $pass);
-
-        if ($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == true) {
+        $saltedPass = $salt . $pass . $salt;
+        $hashPass = hash('sha256', $saltedPass);
+        $passPrepare = $conn->prepare("Select user_password from users where user_email='$email'");
+        $passPrepare->execute();
+        $resultPass = $passPrepare->get_result();
+        $finalPass = $resultPass->fetch_assoc();
+        console_log($finalPass["user_password"]);
+        console_log($hashPass);
+        if ($hashPass ==  $finalPass["user_password"] && $admin == true) {
             setcookie("logged_in" , "true");
             setCookie("admin" , "true");
             return validate_response(true, "Password match");
         } 
-        else if($hashPass ==  $resultPass->fetch_assoc()["password"] && $admin == false){
+        else if($hashPass ==  $finalPass["user_password"] && $admin == false){
             setcookie("logged" , "true");
             return validate_response(true, "Password match");
         }
@@ -45,4 +48,12 @@ function val($email, $pass)
     }
     return 0;
 }
+function console_log($data, $add_script_tags = false) {
+    $command = 'console.log('. json_encode($data, JSON_HEX_TAG).');';
+    if ($add_script_tags) {
+        $command = '<script>'. $command . '</script>';
+    }
+    echo $command;
+}
+?>
 

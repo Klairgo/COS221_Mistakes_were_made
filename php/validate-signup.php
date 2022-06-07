@@ -46,8 +46,8 @@ function validate($fname, $lname, $email, $password, $conf_password){
     }
     else{
         $salt = $email;
-        $saltPass = $salt + $password + $salt;
-        $password_hashed = password_hash($saltPass, PASSWORD_ARGON2ID);
+        $saltPass = $salt . $password . $salt;
+        $password_hashed = hash('sha256', $saltPass);
         //$password_hashed = password_hash($new_pass, PASSWORD_DEFAULT);
 
         $query = "INSERT INTO users (user_type, user_name, user_surname, user_email, user_password) VALUES ('$role', '$fname','$lname', '$email', '$password_hashed')";
