@@ -59,7 +59,7 @@ function validate($fname, $lname, $email, $password, $conf_password){
         }
         else{
             $conn->close();
-            return validate_response(false, "Email already exists");
+            return validate_response(false, $conn->error);
         }
     }
     
