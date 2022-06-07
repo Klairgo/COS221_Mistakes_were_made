@@ -113,10 +113,11 @@
     background-color: rgb(41, 50, 65);
     border-style: solid;
     border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
-    width :75vw;
-    height: 75vh;
-    font-family: "anu", sans-serif;
+    width :85vw;
+    height: 85vh;
+    font-family: "ariel";
     font-size: xx-large;
+    
     
     
   }
@@ -139,6 +140,7 @@
     background-color: rgb(41, 50, 65);
     border-style: solid; 
      border-image: linear-gradient( to bottom right,#528cf0,#DDA62A,#ef41cb) 1;
+     align-self: center;
   }
   .flex-2 {
   
@@ -154,9 +156,12 @@
   #gtag
   {
     flex-direction: column;
-    justify-content: center;
-    
-    width: 100%; 
+    /* align-self: left; */
+    /* border: none; */
+    width: 50%; 
+    border: none;
+      align-self: left;
+      font-size: 100px;
    
   }
   #image
@@ -165,8 +170,9 @@
       flex-direction: column;
       justify-content: center;
      
-      width:50%; 
+      width:25%; 
       height:50%;
+      border: none;
     }
     #rest{
       flex-direction: row;
@@ -178,8 +184,9 @@
     #restin{
       flex-direction: column;
       justify-content: center;
-      width:50%; 
+      width:75%; 
       height:50%;
+      
     }
     #restin1{
       flex-direction: column;
@@ -187,6 +194,9 @@
      padding: 5px;
       width:100%; 
       height:100%;
+      border-left: none;
+      border-right: none;
+
     }
     #st{
       height: 25%;

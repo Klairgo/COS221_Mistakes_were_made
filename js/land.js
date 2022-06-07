@@ -88,8 +88,8 @@ function landonme(whoops, gtag) {
                 data.message[0].gamer_tag +
                 "</div>" +
                 '<div class="flex-2" id="rest">' +
-                '<div class="flex-1" id="image" style="text-align:centre">' +
-                '<img height="300" width="300" src="data:image/png;base64,' + data.message[0].player_img + '"/>' +
+                '<div class="flex-1" id="image">' +
+                '<img style="margin-bottom: 100px; margin-left: 30px;" height="325" width="325" src="data:image/png;base64,' + data.message[0].player_img + '"/>' +
                 "</div>" +
                 '<div class="flex-2" id="restin">' +
                 ' <div class="flex-1" id="restin1">' +
@@ -98,7 +98,7 @@ function landonme(whoops, gtag) {
                 "</div>" +
                 ' <div class="flex-1" id="restin1">' +
                 "Team name: " +
-                data.message[0].team_name;
+                data.message[0].team_name+
               "</div>" +
                 '<div class="flex-1" id="restin1">' +
                 "Country: " +
@@ -147,7 +147,7 @@ function landonme(whoops, gtag) {
                 data.message[0].accuracy +
                 "</div>" +
                 ' <div class="flex-1" id="restin1">' +
-                " Entry Success:" +
+                " Entry Success: " +
                 data.message[0].entry_success +
                 "</div>" +
                 "</div>" +
