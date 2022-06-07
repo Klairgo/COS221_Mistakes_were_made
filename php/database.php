@@ -498,13 +498,13 @@ class database {
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("SELECT player_img gamer_tag, P.name, T.name AS team_name, country, world_ranking, games_won, deaths, assists, games_played, utility_damage, adr, damage_done, accuracy, entry_success FROM (player_statistics AS S INNER JOIN(player AS P INNER JOIN teams AS T ON P.team_id = T.team_id) ON P.player_id = S.player_id) WHERE P.gamer_tag = ?");
+        $stmt = $conn->prepare("SELECT player_img, gamer_tag, P.name, T.name AS team_name, country, world_ranking, games_won, deaths, assists, games_played, utility_damage, adr, damage_done, accuracy, entry_success FROM (player_statistics AS S INNER JOIN(player AS P INNER JOIN teams AS T ON P.team_id = T.team_id) ON P.player_id = S.player_id) WHERE P.gamer_tag = ?");
         $stmt->bind_param("s", $data["gamer_tag"]);
         $stmt->execute();
         $result = $stmt->get_result();
         $arr = [];
         while($row = $result->fetch_assoc()){
-            $row['img_player'] = base64_encode($row['player_img']);
+            $row['player_img'] = base64_encode($row['player_img']);
             array_push($arr, $row);
         }
         return $arr;
