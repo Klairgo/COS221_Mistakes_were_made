@@ -69,7 +69,12 @@ function login(){
                     window.location.href="../php/landing.php";
                 }
                 else{
-                   showError(email, data.message) ;
+                    if(data.message = "Password does not match"){
+                        showError(password, data.message);
+                    }
+                    else{
+                        showError(email, data.message);
+                    }
                 }
             }
         );
@@ -143,7 +148,7 @@ const val_password = (vpassword) => {
         showError(vpassword, "Please enter a password");
     }
     else if(!check_pass(password)){
-        showError(vpassword, "Please enter a valid password. Paswword must consist of at least 1 lowercase letter, 1 uppercase letter, 1 number and 1 symbol. Password has to be atleast 8 characters long.");
+        showError(vpassword, "Password does not match");
     }
     else{
         showSuccess(vpassword);
