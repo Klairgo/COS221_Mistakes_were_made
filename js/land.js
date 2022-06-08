@@ -54,7 +54,7 @@ function landonme(whoops, gtag) {
             for (i = 0; i < data.message.length; i++) {
               //chech to see if tournament name changed
               string +=
-                '<div class="fex-v" ><a class="flex-t"  ><div id="tname" onclick="landonme(\'tep\',\'1\')"  style="font-family: Arial;">' +
+                '<div class="fex-v" ><a class="flex-t"  ><div id="tname" onclick="landonme(\'tep\',\''+data.message[i].team_id+'\')"  style="font-family: Arial;">' +
                 data.message[i].name +
                 '</div><div id="trank" style="font-family: Arial;">' +
                 data.message[i].ranking +
