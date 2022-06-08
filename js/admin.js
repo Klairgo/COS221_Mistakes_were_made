@@ -112,7 +112,7 @@ function getBase64(file, callback) {
     reader.readAsDataURL(file);
     reader.onload = function () {
         string = reader.result;
-        callback(string);
+        callback(string.substr(22));
     };
     reader.onerror = function (error) {
         console.log('Error: ', error);
@@ -123,8 +123,8 @@ function getBase64(file, callback) {
 function makePlayer(){
     show("login");
     hide("mess");
-    arr = ["name", "team_id", "gamertag", "country"];
-    head = ["Name", "Team Id", "Gamertag", "Country"];
+    arr = ["name", "team_id", "gamertag", "country", "ranking"];
+    head = ["Name", "Team Id", "Gamertag", "Country", "Player Ranking"];
     var string = '<h1>Create Player</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
@@ -138,14 +138,14 @@ function makePlayer(){
         if(check_name(element(arr[0]).value) == false && Number.isInteger(+val1) == true && check_name(element(arr[3]).value) == false){
             getBase64(element("player_img").files[0], (data)=>{
 
-                console.log(data)
                 const info = {
                     "action" : "create_player" ,
                     "name" : element(arr[0]).value,
                     "team_id" : element(arr[1]).value,
                     "gamer_tag" : element(arr[2]).value,
                     "country" : element(arr[3]).value,
-                    "player_img": data
+                    "player_img": data,
+                    "ranking": element(arr[4]).value
                 }
                 ajax(info, function(data){
                     if(data.success){

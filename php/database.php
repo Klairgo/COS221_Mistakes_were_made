@@ -248,12 +248,29 @@ class database {
     }
     
     private function create_player($data){
-        if(!isset($data["name"]) || !isset($data["team_id"]) || !isset($data["gamer_tag"]) || !isset($data["country"]) || !isset($data["player_img"])){
+        if(!isset($data["name"]) || !isset($data["team_id"]) || !isset($data["gamer_tag"]) || !isset($data["country"]) || !isset($data["player_img"]) || !isset($data["ranking"])){
             return "Not all attributes were given";
         }
         global $conn;
         $stmt = $conn->prepare("INSERT INTO player (name, team_id, gamer_tag, country, player_img) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("sssss", $data["name"], $data["team_id"], $data["gamer_tag"], $data["country"], base64_decode($data["player_img"])); 
+        $stmt->execute();
+        if($stmt->error){
+            return $stmt->error;
+        }
+        $stmt->close();
+        $stmt = $conn->prepare("SELECT player_id FROM player WHERE name = ?");
+        $stmt->bind_param("s", $data["name"]); 
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if($stmt->error){
+            return $stmt->error;
+        }
+        $stmt->close();
+
+        $stmt = $conn->prepare("INSERT INTO player_statistics (player_id, world_ranking) VALUES (?, ?)");
+        $stmt->bind_param("ss", $row["player_id"], $data["ranking"]); 
         $stmt->execute();
         if($stmt->error){
             return $stmt->error;
