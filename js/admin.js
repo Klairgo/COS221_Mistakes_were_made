@@ -111,25 +111,26 @@ function makeTournament(){
 function makePlayer(){
     show("login");
     hide("mess");
-    arr = ["name", "team_id", "gamertag", "country", "player_img"];
-    head = ["Name", "Team Id", "Gamertag", "Country", "player_img"];
+    arr = ["name", "team_id", "gamertag", "country"];
+    head = ["Name", "Team Id", "Gamertag", "Country"];
     string = '<h1>Create Player</h1> <div id="signup_box"> ';
     for(let i = 0; i < arr.length; i++){
         string += ' <div class="field"> <label for="name">' + head[i] + '</label> <input type="text" name="name" id="' + arr[i] + '" placeholder="Enter ' + head[i] +'"/> <small></small> </div>';      
     }
+    string += ' <div class="field"> <label for="name">Player Image</label> <input type="file" name="name" id="player_id" accept="image/png, image/jpeg, image/webp"/> <small></small> </div>';      
     string += '<div class="field"> <input type="submit" value="Create" id="button" style="margin-top: 35px" onclick = makeAjax(info)"/></div> ';
     document.getElementById("login").innerHTML = string;
     document.getElementById("button").addEventListener("click", function() {
         val1 = element(arr[1]).value;
         val2 = element(arr[2]).value;
         if(check_name(element(arr[0]).value) == false && Number.isInteger(+val1) == true && check_name(element(arr[3]).value) == false){
+            console.log(base64_encode(element(arr[4]).value));
         const info = {
             "action" : "create_player" ,
             "name" : element(arr[0]).value,
             "team_id" : element(arr[1]).value,
             "gamer_tag" : element(arr[2]).value,
             "country" : element(arr[3]).value,
-            "player_img" : element(arr[4].value),
         }
         ajax(info, function(data){
             if(data.success){
