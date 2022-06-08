@@ -175,7 +175,7 @@ function landonme(whoops, gtag) {
               console.log('shit');
               //handle data.message
               string =
-                ' <div class="fex-v"><a class="flex-t" ><div id="tname">Gamer Tag</div><div id="trank">World Rank</div></a></div>';
+                ' <div class="fex-v"><a class="flex-t" ><div id="tname">Gamer Tag</div></a></div>';
   
               for (i = 0; i < data.message.length; i++) {
                 //chech to see if tournament name changed
