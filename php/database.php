@@ -490,7 +490,7 @@ class database {
             return "Not all attributes were given";
         }
         global $conn;
-        $stmt = $conn->prepare("DELETE FROM accounts WHERE email = ?");
+        $stmt = $conn->prepare("DELETE FROM users WHERE user_email = ?");
         $stmt->bind_param("s", $data["email"]);
         $stmt->execute();
         if($stmt->error){
