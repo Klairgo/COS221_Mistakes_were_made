@@ -167,7 +167,8 @@ function landonme(whoops, gtag) {
         document.getElementById("team").style.backgroundColor = "#DDA62A";
         ajax(
           {
-            action: "get_player",
+            action: "get_team_player",
+            team_id: gtag
           },
           function (data) {
             if (data.success) {
@@ -184,8 +185,8 @@ function landonme(whoops, gtag) {
                   '\')" ><div id="tname" style="font-family: Arial;">' +
                   data.message[i].gamer_tag +
                   '</div><div id="trank" style="font-family: Arial;">' +
-                  data.message[i].world_ranking +
-                  "</div></a></div>";
+        
+                  "</a></div>";
               }
               document.getElementById("main").innerHTML = string;
               console.log('shit');
