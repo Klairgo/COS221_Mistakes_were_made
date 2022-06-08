@@ -1,7 +1,7 @@
 <?php
 
 
-if($_COOKIE["logged_in"] == "true"  && isset($_COOKIE["admin"])){
+if($_COOKIE["logged"] == "true"  && isset($_COOKIE["admin"])){
 echo (file_get_contents("adminHeader.php"));
 echo '<!DOCTYPE html>
 
@@ -35,7 +35,7 @@ echo '<!DOCTYPE html>
 </html>';
 }
 
-else if ($_COOKIE["logged_in"] == "true" && isset($_COOKIE["admin"]) == false){
+else if ($_COOKIE["logged"] == "true" && isset($_COOKIE["admin"]) == false){
      echo (file_get_contents("header.php"));
 echo '<!DOCTYPE html>
 

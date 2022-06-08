@@ -10,13 +10,14 @@
           window.onunload=function(){null};
      </script>
      <meta>
-     <title>index</title>
+     <title>CSGO</title>
      <meta charset="UTF-8" />
      <meta name="author" content="Mistakes_were_made" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      </meta>
      <link rel="stylesheet" href="css/hero.css">
      <link rel="stylesheet" href="css/nav.css">
+     <link rel="icon" href="css/img/soldier.png">
 </head>
 
 <body>

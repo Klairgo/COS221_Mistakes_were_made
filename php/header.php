@@ -4,7 +4,7 @@
 
 <head>
 <meta>
-<title>Header</title>
+<title>CSGO</title>
   <meta charset="UTF-8" />
   <meta name="author" content="Mistakes were made" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,6 +13,7 @@
   <meta http-equiv='pragma' content='no-cache'>
 </meta>
 <link rel="stylesheet" href="../css/nav.css">
+<link rel="icon" href="../css/img/soldier.png">
 <script src="../js/land.js"></script>
 <script src ="../js/logout.js"></script>
 </head>

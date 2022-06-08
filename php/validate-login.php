@@ -18,7 +18,7 @@ function val($email, $pass)
     $checkIn = mysqli_num_rows($result);
     setcookie("admin" , "false");
 
-    if($checkUser = 'u21489549@tuks.co.za' || $checkUser = "jake.mileham@gmail.com" || $checkUser = "cadenjared4@gmail.com" || $checkUser = "keithashcraft02@gmail.com" || $checkUser = "u21555258@tuks.co.za"){//need to insert emails here
+    if($checkUser == 'u21489549@tuks.co.za' || $checkUser == "jake.mileham@gmail.com" || $checkUser == "cadenjared4@gmail.com" || $checkUser == "keithashcraft02@gmail.com" || $checkUser == "u21555258@tuks.co.za"){//need to insert emails here
         $admin = true;
     }
     if ($checkIn != 0) {

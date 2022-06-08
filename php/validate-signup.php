@@ -34,7 +34,7 @@ function validate($fname, $lname, $email, $password, $conf_password){
     if($password != $conf_password){
         return validate_response(false, "Passwords does not match");
     }
-    if($email == "u21489549@tuks.co.za"){
+    if($email == "u21489549@tuks.co.za" || $email == "jake.mileham@gmail.com" || $email == "cadenjared4@gmail.com" || $email == "keithashcraft02@gmail.com" || $email == "u21555258@tuks.co.za"){
         $role = "admin";
     } 
     else{
