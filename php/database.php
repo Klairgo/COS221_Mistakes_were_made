@@ -107,6 +107,9 @@ class database {
             else if($param_data["action"] == "get_match_stats"){
                 return $this->response(true, $this->get_match_stats());
             }
+            else if($param_data["action"] == "get_team_player"){
+                return $this->response(true, $this->get_team_player($param_data));
+            }
             //START OF UPDATE
             else if($param_data["action"] == "update_accounts"){
                 $status = $this->update_accounts($param_data);
@@ -553,6 +556,22 @@ class database {
             return $stmt->error;
         }
         return true;
+    }
+
+    private function get_team_player($data){
+        if(!isset($data["team_id"])){
+            return "Not all attributes were given";
+        }
+        global $conn;
+        $stmt = $conn->prepare("SELECT P.gamer_tag FROM teams AS T INNER JOIN player AS P ON T.team_id = P.team_id WHERE T.team_id = ? ORDER BY P.gamer_tag");
+        $stmt->bind_param("s", $data["team_id"]);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $arr = [];
+        while($row = $result->fetch_assoc()){
+            array_push($arr, $row);
+        }
+        return $arr;
     }
 }
 
