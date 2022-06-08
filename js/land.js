@@ -54,7 +54,7 @@ function landonme(whoops, gtag) {
             for (i = 0; i < data.message.length; i++) {
               //chech to see if tournament name changed
               string +=
-                '<div class="fex-v" ><a class="flex-t"  ><div id="tname"  style="font-family: Arial;">' +
+                '<div class="fex-v" ><a class="flex-t"  ><div id="tname" onclick="landonme(\'tep\',\'1\')"  style="font-family: Arial;">' +
                 data.message[i].name +
                 '</div><div id="trank" style="font-family: Arial;">' +
                 data.message[i].ranking +
@@ -161,6 +161,41 @@ function landonme(whoops, gtag) {
         }
       );
       break;
+      case "tep":
+        document.getElementById("tor").style.backgroundColor = "black";
+        document.getElementById("player").style.backgroundColor = "black";
+        document.getElementById("team").style.backgroundColor = "#DDA62A";
+        ajax(
+          {
+            action: "get_player",
+          },
+          function (data) {
+            if (data.success) {
+              console.log('shit');
+              //handle data.message
+              string =
+                ' <div class="fex-v"><a class="flex-t" ><div id="tname">Gamer Tag</div><div id="trank">World Rank</div></a></div>';
+  
+              for (i = 0; i < data.message.length; i++) {
+                //chech to see if tournament name changed
+                string +=
+                  '<div class="fex-v" ><a class="flex-t" onclick="landonme(\'tev\',\'' +
+                  data.message[i].gamer_tag +
+                  '\')" ><div id="tname" style="font-family: Arial;">' +
+                  data.message[i].gamer_tag +
+                  '</div><div id="trank" style="font-family: Arial;">' +
+                  data.message[i].world_ranking +
+                  "</div></a></div>";
+              }
+              document.getElementById("main").innerHTML = string;
+              console.log('shit');
+            } else {
+              //show error
+            }
+          }
+        );
+        break;
+        
 
     default:
       document.getElementById("tor").style.backgroundColor = "#DDA62A";
